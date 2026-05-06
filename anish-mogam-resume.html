@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anish Mogam — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    @page { size: A4; margin: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1a1a2e;
+      background: #fff;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .resume-page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      padding: 28mm 24mm 20mm;
+      background: #fff;
+    }
+
+    /* ===== HEADER ===== */
+    .r-header { margin-bottom: 18px; border-bottom: 2px solid #0ea5e9; padding-bottom: 14px; }
+    .r-name { font-size: 26px; font-weight: 700; color: #0f172a; letter-spacing: 0.02em; }
+    .r-title { font-size: 13px; font-weight: 500; color: #0ea5e9; margin-top: 2px; letter-spacing: 0.03em; }
+    .r-contact-row {
+      display: flex; flex-wrap: wrap; gap: 6px 18px;
+      margin-top: 8px; font-size: 11px; color: #475569;
+    }
+    .r-contact-row a { color: #0ea5e9; text-decoration: none; }
+    .r-contact-row a:hover { text-decoration: underline; }
+    .r-divider { display: inline; }
+    .r-divider::before { content: '•'; margin: 0 2px; color: #94a3b8; }
+
+    /* ===== SECTIONS ===== */
+    .r-section { margin-bottom: 16px; }
+    .r-section-title {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #0ea5e9;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px; margin-bottom: 10px;
+    }
+
+    /* ===== SUMMARY ===== */
+    .r-summary { font-size: 11.5px; color: #334155; line-height: 1.65; }
+
+    /* ===== EDUCATION ===== */
+    .r-edu-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+    .r-edu-name { font-size: 12.5px; font-weight: 600; color: #0f172a; }
+    .r-edu-sub { font-size: 11px; color: #64748b; margin-top: 1px; }
+    .r-edu-year { font-size: 11px; color: #64748b; white-space: nowrap; font-weight: 500; }
+
+    /* ===== SKILLS ===== */
+    .r-skills-grid { display: grid; grid-template-columns: 120px 1fr; gap: 5px 12px; font-size: 11.5px; }
+    .r-skill-cat { font-weight: 600; color: #0f172a; }
+    .r-skill-list { color: #334155; }
+
+    /* ===== PROJECTS ===== */
+    .r-project { margin-bottom: 12px; }
+    .r-project-header { display: flex; justify-content: space-between; align-items: baseline; }
+    .r-project-name { font-size: 12.5px; font-weight: 600; color: #0f172a; }
+    .r-project-tag {
+      font-size: 9.5px; font-weight: 600; color: #0ea5e9;
+      background: #f0f9ff; padding: 1px 6px; border-radius: 3px;
+      letter-spacing: 0.03em;
+    }
+    .r-project-tech { font-size: 10px; color: #64748b; margin-top: 2px; font-style: italic; }
+    .r-project-bullets { margin-top: 4px; padding-left: 16px; }
+    .r-project-bullets li { font-size: 11px; color: #334155; margin-bottom: 2px; line-height: 1.55; }
+
+    /* ===== ACHIEVEMENTS ===== */
+    .r-achievement { display: flex; gap: 8px; margin-bottom: 6px; font-size: 11.5px; }
+    .r-achievement-bullet { color: #0ea5e9; font-weight: 700; flex-shrink: 0; }
+    .r-achievement-text { color: #334155; }
+    .r-achievement-text strong { color: #0f172a; }
+
+    /* ===== CERTIFICATIONS ===== */
+    .r-cert { font-size: 11.5px; color: #334155; margin-bottom: 4px; }
+    .r-cert strong { color: #0f172a; }
+
+    /* ===== LINKS ROW ===== */
+    .r-links-row { display: flex; gap: 18px; margin-top: 2px; }
+    .r-links-row a {
+      font-size: 10.5px; color: #0ea5e9; text-decoration: none;
+      border-bottom: 1px dotted #0ea5e9; padding-bottom: 0;
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+      body { background: #fff; }
+      .resume-page { padding: 20mm 22mm 18mm; box-shadow: none; }
+      .no-print { display: none !important; }
+    }
+
+    /* ===== SCREEN ONLY EXTRAS ===== */
+    @media screen {
+      body { background: #f1f5f9; padding: 20px 0; }
+      .resume-page { box-shadow: 0 4px 30px rgba(0,0,0,0.12); border-radius: 4px; }
+    }
+  </style>
+</head>
+<body>
+<div class="resume-page">
+
+  <!-- HEADER -->
+  <div class="r-header">
+    <div class="r-name">ANISH MOGAM</div>
+    <div class="r-title">Computer Science Student | Full Stack Developer | AI Enthusiast</div>
+    <div class="r-contact-row">
+      <span><a href="mailto:anishmogam@gmail.com">anishmogam@gmail.com</a></span>
+      <span class="r-divider"></span>
+      <span>+91 86051 04120</span>
+      <span class="r-divider"></span>
+      <span>Pune, Maharashtra</span>
+      <span class="r-divider"></span>
+      <span><a href="https://www.linkedin.com/in/anish-mogam-33a2b6218/" target="_blank">LinkedIn</a></span>
+      <span class="r-divider"></span>
+      <span><a href="https://github.com/Anish1302D" target="_blank">GitHub</a></span>
+    </div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="r-section">
+    <div class="r-section-title">Professional Summary</div>
+    <div class="r-summary">
+      Results-driven Computer Science student at Savitribai Phule Pune University (SPPU) with hands-on experience in full-stack development, AI/ML systems, and cloud-native applications. Passionate about building intelligent, scalable, and production-grade software. Active hackathon participant with experience in competitive development environments including AMD Slingshot. Seeking internship opportunities to apply technical skills in real-world engineering challenges.
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="r-section">
+    <div class="r-section-title">Education</div>
+    <div class="r-edu-row">
+      <div>
+        <div class="r-edu-name">Bachelor of Science in Computer Science</div>
+        <div class="r-edu-sub">Savitribai Phule Pune University (SPPU), Pune</div>
+      </div>
+      <div class="r-edu-year">2023 – 2026</div>
+    </div>
+  </div>
+
+  <!-- TECHNICAL SKILLS -->
+  <div class="r-section">
+    <div class="r-section-title">Technical Skills</div>
+    <div class="r-skills-grid">
+      <span class="r-skill-cat">Languages</span>
+      <span class="r-skill-list">JavaScript, TypeScript, Python, HTML5, CSS3, SQL</span>
+      <span class="r-skill-cat">Frontend</span>
+      <span class="r-skill-list">React.js, Next.js, Tailwind CSS, Framer Motion, shadcn/ui</span>
+      <span class="r-skill-cat">Backend</span>
+      <span class="r-skill-list">Node.js, Express.js, Flask, FastAPI, REST APIs, JWT Auth</span>
+      <span class="r-skill-cat">AI / ML</span>
+      <span class="r-skill-list">TensorFlow, ResNet CNN, XGBoost, SHAP / XAI, OpenCV, LangChain, Hugging Face</span>
+      <span class="r-skill-cat">Databases</span>
+      <span class="r-skill-list">MongoDB, PostgreSQL, MySQL, Firebase Firestore, Redis</span>
+      <span class="r-skill-cat">Cloud / DevOps</span>
+      <span class="r-skill-list">Firebase, Vercel, Docker, GitHub Actions, Google Cloud, AWS (basics)</span>
+      <span class="r-skill-cat">Tools</span>
+      <span class="r-skill-list">Git, GitHub, Figma, Postman, VS Code, Linux, Jupyter Notebook</span>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="r-section">
+    <div class="r-section-title">Projects</div>
+
+    <div class="r-project">
+      <div class="r-project-header">
+        <div class="r-project-name">InfraGuard AI — Infrastructure Failure Prediction System</div>
+        <div class="r-project-tag">AMD Slingshot</div>
+      </div>
+      <div class="r-project-tech">Python, ResNet CNN, XGBoost, SHAP, React, FastAPI, OpenCV</div>
+      <ul class="r-project-bullets">
+        <li>Developed a multimodal failure prediction system combining satellite imagery, traffic data, AQI, weather, and flood history for proactive infrastructure monitoring.</li>
+        <li>Implemented ResNet CNN + XGBoost ensemble model achieving high accuracy in road condition classification across 4 cities globally.</li>
+        <li>Built a real-time monitoring dashboard with explainable AI via SHAP and an automated critical alert system.</li>
+        <li>Deployed at <strong>infraguardai.tech</strong> with a FastAPI backend and React frontend.</li>
+      </ul>
+    </div>
+
+    <div class="r-project">
+      <div class="r-project-header">
+        <div class="r-project-name">MedAssist Pro — AI-Powered Medical Triage Assistant</div>
+        <div class="r-project-tag">In Development</div>
+      </div>
+      <div class="r-project-tech">Next.js, Python, LangChain, MongoDB</div>
+      <ul class="r-project-bullets">
+        <li>Designing an AI-powered symptom analyzer and triage assistant with NLP-based diagnosis suggestions.</li>
+        <li>Integrating LangChain for intelligent medical Q&A and a doctor recommendation engine.</li>
+      </ul>
+    </div>
+
+    <div class="r-project">
+      <div class="r-project-header">
+        <div class="r-project-name">LearnForge — Adaptive Learning Platform</div>
+        <div class="r-project-tag">In Development</div>
+      </div>
+      <div class="r-project-tech">Next.js, Firebase, Tailwind CSS, OpenAI API</div>
+      <ul class="r-project-bullets">
+        <li>Building an adaptive EdTech platform with AI-curated study paths and spaced repetition system.</li>
+        <li>Implementing progress tracking, collaborative workspaces, and personalized learning pathways.</li>
+      </ul>
+    </div>
+
+    <div class="r-project">
+      <div class="r-project-header">
+        <div class="r-project-name">DataViz Studio — Real-Time Data Visualization Platform</div>
+        <div class="r-project-tag">In Development</div>
+      </div>
+      <div class="r-project-tech">React, D3.js, Node.js, PostgreSQL</div>
+      <ul class="r-project-bullets">
+        <li>Creating a drag-and-drop chart builder with live API feeds and exportable report generation.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ACHIEVEMENTS -->
+  <div class="r-section">
+    <div class="r-section-title">Achievements & Activities</div>
+    <div class="r-achievement">
+      <span class="r-achievement-bullet">▸</span>
+      <span class="r-achievement-text"><strong>AMD Slingshot Participant (2025)</strong> — Built InfraGuard AI, a multimodal infrastructure failure prediction system with real-time monitoring across 4 cities.</span>
+    </div>
+    <div class="r-achievement">
+      <span class="r-achievement-bullet">▸</span>
+      <span class="r-achievement-text"><strong>5+ Hackathons</strong> — Active hackathon competitor with experience in rapid prototyping and competitive development.</span>
+    </div>
+    <div class="r-achievement">
+      <span class="r-achievement-bullet">▸</span>
+      <span class="r-achievement-text"><strong>AI/ML Specialization</strong> — Completed structured coursework in machine learning, neural networks, computer vision, and NLP through NPTEL and online programs.</span>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="r-section">
+    <div class="r-section-title">Certifications</div>
+    <div class="r-cert"><strong>Full Stack Web Development</strong> — Industry Certification (React, Node.js, Databases, Cloud Deployment)</div>
+    <div class="r-cert"><strong>AI/ML Specialization</strong> — NPTEL / Online Coursework</div>
+  </div>
+
+</div>
+
+<script>
+// Auto-print if opened with ?print=true parameter
+if (new URLSearchParams(window.location.search).get('print') === 'true') {
+  window.addEventListener('load', () => {
+    setTimeout(() => window.print(), 400);
+  });
+}
+</script>
+</body>
+</html>
