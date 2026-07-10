@@ -486,6 +486,35 @@
       0%,100% { box-shadow: 0 0 0px rgba(245,158,11,0); }
       50% { box-shadow: 0 0 12px rgba(245,158,11,0.2); }
     }
+    .live-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.25rem 0.7rem; border-radius: 100px;
+      font-size: 0.65rem; font-family: var(--font-heading); font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: rgba(6,182,212,0.12); color: var(--cyan);
+      border: 1px solid rgba(6,182,212,0.3);
+      animation: livePulse 2.5s ease-in-out infinite;
+    }
+    .live-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cyan); animation: pulse 1.5s infinite;
+    }
+    @keyframes livePulse {
+      0%,100% { box-shadow: 0 0 0px rgba(6,182,212,0); }
+      50% { box-shadow: 0 0 12px rgba(6,182,212,0.2); }
+    }
+    .completed-badge {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.25rem 0.7rem; border-radius: 100px;
+      font-size: 0.65rem; font-family: var(--font-heading); font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: rgba(16,185,129,0.12); color: #34D399;
+      border: 1px solid rgba(16,185,129,0.3);
+    }
+    .completed-badge::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: #34D399;
+    }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 1.5rem; }
     .project-card {
       background: var(--bg-card); border: 1px solid var(--border);
@@ -1048,6 +1077,76 @@
     <!-- Project Grid -->
     <div class="projects-grid">
       <div class="project-card reveal">
+        <div class="project-card-thumb" style="background:linear-gradient(135deg,rgba(6,182,212,0.15),rgba(30,58,138,0.1))">
+          <span style="font-size:3.5rem;filter:drop-shadow(0 0 20px rgba(6,182,212,0.5))">🛰️</span>
+        </div>
+        <div class="project-card-info">
+          <div class="project-type" style="display:flex;align-items:center;gap:0.6rem">Full Stack · AI · Aerospace <span class="live-badge">Live</span></div>
+          <h3 class="project-title">KesslerX</h3>
+          <p class="project-desc">AI-powered Orbital Traffic Management and Space Situational Awareness platform. Features a 3D CesiumJS globe tracking live satellite and debris data, orbital risk analysis, space weather forecasting, and real-time WebSocket conjunction alerts.</p>
+          <div class="project-stack">
+            <span class="stack-pill">React</span>
+            <span class="stack-pill">TypeScript</span>
+            <span class="stack-pill">CesiumJS</span>
+            <span class="stack-pill">Tailwind CSS</span>
+            <span class="stack-pill">FastAPI</span>
+            <span class="stack-pill">Space-Track API</span>
+            <span class="stack-pill">WebSockets</span>
+          </div>
+          <div class="project-links">
+            <a href="https://kessler-x.vercel.app" target="_blank" class="proj-btn primary">🔗 Live Demo</a>
+            <a href="https://github.com/Anish1302D/KesslerX" target="_blank" class="proj-btn secondary">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-card-thumb" style="background:linear-gradient(135deg,rgba(239,68,68,0.15),rgba(245,158,11,0.1))">
+          <span style="font-size:3.5rem;filter:drop-shadow(0 0 20px rgba(239,68,68,0.5))">💬</span>
+        </div>
+        <div class="project-card-info">
+          <div class="project-type" style="display:flex;align-items:center;gap:0.6rem">Full Stack · Real-time Chat <span class="completed-badge">Completed</span></div>
+          <h3 class="project-title">HeyLo App</h3>
+          <p class="project-desc">A real-time messaging and productivity application built with a custom liquid glass UI. Supports instant messaging, typing indicators, read receipts, and peer-to-peer WebRTC voice calling.</p>
+          <div class="project-stack">
+            <span class="stack-pill">React</span>
+            <span class="stack-pill">Vite</span>
+            <span class="stack-pill">Socket.io</span>
+            <span class="stack-pill">PeerJS (WebRTC)</span>
+            <span class="stack-pill">Node.js</span>
+            <span class="stack-pill">Express</span>
+            <span class="stack-pill">MongoDB</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Anish1302D/HeyLoApp" target="_blank" class="proj-btn secondary" style="width:100%;justify-content:center">⌥ GitHub Repository</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-card-thumb" style="background:linear-gradient(135deg,rgba(16,185,129,0.15),rgba(4,120,87,0.1))">
+          <span style="font-size:3.5rem;filter:drop-shadow(0 0 20px rgba(16,185,129,0.5))">🏔️</span>
+        </div>
+        <div class="project-card-info">
+          <div class="project-type" style="display:flex;align-items:center;gap:0.6rem">PWA · AI · GIS <span class="completed-badge">Completed</span></div>
+          <h3 class="project-title">Smart Trek Companion</h3>
+          <p class="project-desc">AI-powered offline-first progressive web app for trekkers and outdoor enthusiasts. Features offline Mapbox navigation, real-time GPS tracking, RAG-based AI trekking guide, and automated SOS fall detection.</p>
+          <div class="project-stack">
+            <span class="stack-pill">React</span>
+            <span class="stack-pill">Zustand</span>
+            <span class="stack-pill">Mapbox GL</span>
+            <span class="stack-pill">Tailwind CSS</span>
+            <span class="stack-pill">FastAPI</span>
+            <span class="stack-pill">Postgres + PostGIS</span>
+            <span class="stack-pill">YOLOv8</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/Anish1302D/smart-trek-companion" target="_blank" class="proj-btn secondary" style="width:100%;justify-content:center">⌥ GitHub Repository</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
         <div class="project-card-thumb" style="background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(59,130,246,0.1))">
           <span style="font-size:3.5rem;filter:drop-shadow(0 0 20px rgba(124,58,237,0.5))">🧬</span>
         </div>
@@ -1218,15 +1317,22 @@
         </div>
         <div>
           <div class="resume-edu-item">
-            <div class="resume-edu-name">MedAssist Pro</div>
+            <div class="resume-edu-name">KesslerX</div>
+            <div class="resume-edu-year" style="color:var(--cyan)">Live Project</div>
           </div>
-          <div class="resume-edu-sub" style="margin-top:0.2rem">AI-powered medical triage assistant using LangChain, NLP, and symptom analysis engine</div>
+          <div class="resume-edu-sub" style="margin-top:0.2rem">AI-powered Orbital Traffic Management platform featuring 3D satellite visualization and WebSocket alert streams</div>
         </div>
         <div>
           <div class="resume-edu-item">
-            <div class="resume-edu-name">LearnForge</div>
+            <div class="resume-edu-name">HeyLo App</div>
           </div>
-          <div class="resume-edu-sub" style="margin-top:0.2rem">Adaptive EdTech platform with AI-curated learning paths and spaced repetition system</div>
+          <div class="resume-edu-sub" style="margin-top:0.2rem">Real-time chat & productivity application with custom liquid glass UI and peer-to-peer WebRTC voice calling</div>
+        </div>
+        <div>
+          <div class="resume-edu-item">
+            <div class="resume-edu-name">Smart Trek Companion</div>
+          </div>
+          <div class="resume-edu-sub" style="margin-top:0.2rem">Offline-first AI trek app with Mapbox navigation, GPS tracking, RAG guide, and YOLOv8 wildlife detection</div>
         </div>
       </div>
       <div class="resume-download-wrap">
