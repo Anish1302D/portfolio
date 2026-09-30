@@ -40,7 +40,7 @@
       "Software Engineering",
       "Community Leadership"
     ],
-    "description": "Founder of Sphere Community, Computer Science student, Full Stack Developer, and AI builder based in Pune, India."
+    "description": "Founder of Sphere, Computer Science student, Full Stack Developer, and AI builder based in Pune, India."
   }
   </script>
   <style>
@@ -394,9 +394,14 @@
       backdrop-filter: blur(20px); border-radius: 12px;
       padding: 0.7rem 1rem; font-size: 0.8rem;
       display: flex; align-items: center; gap: 0.5rem;
+      white-space: nowrap;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
+    .about-floating-badge:hover { transform: translateY(-3px); }
     .about-floating-badge.b1 { top: -15px; right: -20px; color: var(--cyan); }
+    .about-floating-badge.b1:hover { border-color: var(--cyan); box-shadow: 0 0 15px rgba(0,229,255,0.25); }
     .about-floating-badge.b2 { bottom: 20px; left: -30px; color: var(--purple); }
+    .about-floating-badge.b2:hover { border-color: var(--purple); box-shadow: 0 0 15px rgba(124,58,237,0.25); }
     .about-text {}
     .about-text p { color: var(--gray); line-height: 1.9; margin-bottom: 1rem; }
     .about-text p strong { color: var(--white); }
@@ -922,9 +927,9 @@
         <div class="about-avatar">🧠</div>
         <div class="about-avatar-ring"></div>
         <div class="about-avatar-ring-2"></div>
-        <div class="about-floating-badge b1">
-          <span>⚡</span> <span>Full Stack Dev</span>
-        </div>
+        <a href="https://sphere-club.vercel.app/about.html" target="_blank" rel="noopener noreferrer" class="about-floating-badge b1" title="Founder of Sphere">
+          <span>🌐</span> <span>Founder of Sphere</span>
+        </a>
         <div class="about-floating-badge b2">
           <span>🤖</span> <span>AI Builder</span>
         </div>
@@ -934,7 +939,7 @@
       <div class="section-label">About Me</div>
       <h2 class="section-title">Engineering the <span class="highlight">Future</span></h2>
       <p>
-        I'm <strong>Anish Mogam</strong>, a Computer Science student at <strong>Savitribai Phule Pune University (SPPU)</strong>, 
+        I'm <strong>Anish Mogam</strong>, founder of <a href="https://sphere-club.vercel.app/about.html" target="_blank" rel="noopener noreferrer"><strong>Sphere</strong></a> and a Computer Science student at <strong>Savitribai Phule Pune University (SPPU)</strong>, 
         driven by an obsession with building technology that matters. I live at the intersection of 
         intelligent systems, elegant code, and ambitious ideas.
       </p>
@@ -948,7 +953,7 @@
         My vision: build products that don't just solve problems — they <strong>redefine what's possible</strong>.
       </p>
       <p>
-        Founder of <a href="https://sphere-club.vercel.app/about.html" target="_blank" rel="noopener noreferrer">Sphere Community</a> — a student-led technology ecosystem for building, hackathons, and emerging tech.
+        Founder of <a href="https://sphere-club.vercel.app/about.html" target="_blank" rel="noopener noreferrer"><strong>Sphere</strong></a> — a student-led technology ecosystem for building, hackathons, and emerging tech.
       </p>
       <div class="about-pillars">
         <div class="about-pillar">
