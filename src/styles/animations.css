@@ -1,81 +1,66 @@
-/* ==================== KEYFRAME ANIMATIONS ==================== */
-@keyframes floatGlow {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(20px, -20px) scale(1.05);
-  }
-}
+/* ==================== PURPOSEFUL TECHNICAL ANIMATIONS ==================== */
 
-@keyframes pulse {
+@keyframes statusBlink {
   0%, 100% {
     opacity: 1;
+    transform: scale(1);
   }
   50% {
-    opacity: 0.3;
+    opacity: 0.35;
+    transform: scale(0.85);
   }
 }
 
-@keyframes blink {
-  0%, 100% {
-    border-color: var(--cyan);
-  }
-  50% {
-    border-color: transparent;
-  }
-}
-
-@keyframes scrollDown {
+@keyframes radarPing {
   0% {
-    opacity: 0;
-    transform: scaleY(0);
-    transform-origin: top;
+    transform: scale(0.9);
+    opacity: 0.8;
   }
-  50% {
-    opacity: 1;
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
   }
   100% {
+    transform: scale(2.2);
     opacity: 0;
-    transform: scaleY(1);
-    transform-origin: top;
   }
 }
 
-@keyframes ringPulse {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
+@keyframes cursorBlink {
+  0%, 49% {
     opacity: 1;
   }
-}
-
-@keyframes devPulse {
-  0%, 100% {
-    box-shadow: 0 0 0px rgba(245, 158, 11, 0);
-  }
-  50% {
-    box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+  50%, 100% {
+    opacity: 0;
   }
 }
 
-@keyframes livePulse {
-  0%, 100% {
-    box-shadow: 0 0 0px rgba(6, 182, 212, 0);
+@keyframes hairlineDraw {
+  from {
+    transform: scaleX(0);
   }
-  50% {
-    box-shadow: 0 0 12px rgba(6, 182, 212, 0.2);
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes telemetrySweep {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(1000%);
   }
 }
 
 /* Reduced motion preference override */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
-

@@ -1,20 +1,49 @@
 :root {
-  --bg-primary: #050816;
-  --bg-secondary: #0B1023;
-  --bg-card: rgba(11, 16, 35, 0.6);
-  --cyan: #00E5FF;
-  --purple: #7C3AED;
-  --blue: #3B82F6;
-  --cyan-dim: rgba(0, 229, 255, 0.15);
-  --purple-dim: rgba(124, 58, 237, 0.15);
-  --white: #FFFFFF;
-  --gray: #94A3B8;
-  --light-blue: #93C5FD;
-  --border: rgba(255, 255, 255, 0.07);
-  --glass: rgba(255, 255, 255, 0.04);
-  --font-display: 'Orbitron', monospace;
-  --font-heading: 'Syne', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-  --transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-}
+  /* ==================== COLOR PALETTE — THE SYSTEMS MONOGRAPH ==================== */
+  /* Deep, authoritative obsidian & charcoal substrates — NO generic violet tints */
+  --bg-canvas: #07080B;
+  --bg-surface: #0E1015;
+  --bg-surface-elevated: #151821;
+  --bg-surface-subtle: #1C202B;
 
+  /* Crisp structural dividers and technical hairline guides */
+  --border-hairline: rgba(255, 255, 255, 0.08);
+  --border-mid: rgba(255, 255, 255, 0.16);
+  --border-strong: rgba(255, 255, 255, 0.32);
+
+  /* High-contrast typography */
+  --text-primary: #F4F5F8;
+  --text-secondary: #8E95A5;
+  --text-tertiary: #525969;
+  --text-inverse: #07080B;
+
+  /* Purposeful technical accents — International Safety Cadmium & telemetry colors */
+  --signal-orange: #FF4B26;
+  --signal-orange-dim: rgba(255, 75, 38, 0.12);
+  --signal-orange-glow: rgba(255, 75, 38, 0.25);
+  --signal-green: #10B981;
+  --signal-green-dim: rgba(16, 185, 129, 0.12);
+  --signal-blue: #3B82F6;
+  --signal-blue-dim: rgba(59, 130, 246, 0.12);
+  --signal-amber: #F59E0B;
+  --signal-amber-dim: rgba(245, 158, 11, 0.12);
+
+  /* ==================== TYPOGRAPHY ==================== */
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* ==================== SPACING & GRID ==================== */
+  --container-max: 1380px;
+  --header-height: 64px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  /* ==================== TRANSITIONS ==================== */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 0.18s;
+  --duration-normal: 0.32s;
+  --duration-slow: 0.6s;
+}

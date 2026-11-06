@@ -14,7 +14,7 @@ export default function Contact() {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState(false);
@@ -22,48 +22,22 @@ export default function Contact() {
 
   useGSAP(
     () => {
-      if (reducedMotion) {
-        gsap.to([infoRef.current, formRef.current], {
+      if (reducedMotion) return;
+
+      gsap.fromTo(
+        [infoRef.current, formRef.current],
+        { opacity: 0, y: 30 },
+        {
           opacity: 1,
-          duration: 0.5,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: containerRef.current,
             start: 'top 80%',
-            once: true
-          }
-        });
-        return;
-      }
-
-      gsap.fromTo(
-        infoRef.current,
-        { opacity: 0, x: -35 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.85,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: infoRef.current,
-            start: 'top 85%',
-            once: true
-          }
-        }
-      );
-
-      gsap.fromTo(
-        formRef.current,
-        { opacity: 0, x: 35 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.85,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: formRef.current,
-            start: 'top 85%',
-            once: true
-          }
+            once: true,
+          },
         }
       );
     },
@@ -82,20 +56,20 @@ export default function Contact() {
 
     const { name, email, subject, message } = formData;
     if (!name.trim() || !email.trim() || !subject.trim() || !message.trim()) {
-      setErrorMsg('⚠ Please fill in all fields.');
+      setErrorMsg('⚠ ERROR: All transmission parameters are required.');
       return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email.trim())) {
-      setErrorMsg('⚠ Please enter a valid email address.');
+      setErrorMsg('⚠ ERROR: Invalid transmitter return address.');
       return;
     }
 
     setIsSubmitting(true);
     setSuccessMsg(true);
 
-    const body = `Hi Anish,\n\n${message.trim()}\n\n---\nFrom: ${name.trim()}\nEmail: ${email.trim()}`;
+    const body = `Hi Anish,\n\n${message.trim()}\n\n---\nTransmitter: ${name.trim()}\nReturn Address: ${email.trim()}`;
     const mailtoLink = `mailto:anishmogam@gmail.com?subject=${encodeURIComponent(
       subject.trim()
     )}&body=${encodeURIComponent(body)}`;
@@ -106,157 +80,380 @@ export default function Contact() {
       setFormData({ name: '', email: '', subject: '', message: '' });
       setIsSubmitting(false);
       setSuccessMsg(false);
-    }, 3000);
+    }, 3500);
   };
 
   return (
-    <section id="contact" ref={containerRef}>
-      <div className="contact-inner">
-        <div className="contact-info" ref={infoRef}>
-          <div className="section-label">Get in Touch</div>
-          <h2 className="section-title">
-            Let's <span className="highlight">Connect</span>
-          </h2>
-          <p className="section-desc">
-            Open to internships, hackathon collaborations, freelance projects, and exciting conversations. 
-            Don't hesitate to reach out.
-          </p>
-
-          <div className="contact-links">
-            <a href="mailto:anishmogam@gmail.com" className="contact-link">
-              <div className="contact-link-icon" style={{ background: 'rgba(0, 229, 255, 0.1)' }}>
-                📧
-              </div>
-              <div className="contact-link-text">
-                <div className="label">EMAIL</div>
-                <div className="value">anishmogam@gmail.com</div>
-              </div>
-            </a>
-
-            <a href="tel:+918605104120" className="contact-link">
-              <div className="contact-link-icon" style={{ background: 'rgba(16, 185, 129, 0.1)' }}>
-                📱
-              </div>
-              <div className="contact-link-text">
-                <div className="label">PHONE</div>
-                <div className="value">+91 86051 04120</div>
-              </div>
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/anish-mogam-33a2b6218/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link"
-            >
-              <div className="contact-link-icon" style={{ background: 'rgba(59, 130, 246, 0.1)' }}>
-                💼
-              </div>
-              <div className="contact-link-text">
-                <div className="label">LINKEDIN</div>
-                <div className="value">linkedin.com/in/anish-mogam</div>
-              </div>
-            </a>
-
-            <a
-              href="https://github.com/Anish1302D"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link"
-            >
-              <div className="contact-link-icon" style={{ background: 'rgba(124, 58, 237, 0.1)' }}>
-                ⌥
-              </div>
-              <div className="contact-link-text">
-                <div className="label">GITHUB</div>
-                <div className="value">github.com/Anish1302D</div>
-              </div>
-            </a>
+    <section
+      id="contact"
+      ref={containerRef}
+      style={{
+        backgroundColor: 'var(--bg-canvas)',
+        padding: '7rem 0',
+      }}
+    >
+      <div className="content-wrapper">
+        {/* Technical Header */}
+        <div className="section-meta-header">
+          <div className="section-code">
+            SECTION // [07] — DIRECT TRANSMISSION &amp; CONTACT TERMINAL
+          </div>
+          <div style={{ color: 'var(--text-tertiary)' }}>
+            INTERNATIONALLY MONITORED // ENCRYPTED INBOX
           </div>
         </div>
 
-        <div ref={formRef}>
-          <form className="contact-form" onSubmit={handleSubmit} noValidate>
-            <div style={{ marginBottom: '1rem' }}>
-              <p style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: '1.1rem' }}>
-                Send a Message
-              </p>
-              <p style={{ fontSize: '0.85rem', color: 'var(--gray)', marginTop: '0.3rem' }}>
-                I typically reply within 24 hours.
-              </p>
-            </div>
+        <div style={{ marginBottom: '4rem' }}>
+          <h2 className="section-title-large">
+            INITIATE DIRECT TRANSMISSION
+          </h2>
+          <p className="section-lead">
+            Available for software engineering internships, technical co-founding, 
+            research initiatives, and ambitious hackathon collaborations.
+          </p>
+        </div>
 
-            <div className="form-group">
-              <label htmlFor="name">NAME</label>
-              <input
-                type="text"
-                id="name"
-                value={formData.name}
-                onChange={handleChange}
-                placeholder="Your name"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="email">EMAIL</label>
-              <input
-                type="email"
-                id="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="your@email.com"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="subject">SUBJECT</label>
-              <input
-                type="text"
-                id="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                placeholder="What's this about?"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">MESSAGE</label>
-              <textarea
-                id="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Your message here..."
-                required
-              />
-            </div>
-
-            <button
-              className="btn-primary"
-              style={{ width: '100%', justifyContent: 'center' }}
-              type="submit"
-              disabled={isSubmitting}
+        {/* Transmit Grid */}
+        <div
+          className="transmit-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1.3fr',
+            gap: '4rem',
+            alignItems: 'start',
+          }}
+        >
+          {/* Left Column: Direct Communication Vectors */}
+          <div ref={infoRef}>
+            <div
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                color: 'var(--signal-orange)',
+                letterSpacing: '0.08em',
+                marginBottom: '1.5rem',
+                borderBottom: '1px solid var(--border-hairline)',
+                paddingBottom: '0.6rem',
+              }}
             >
-              {isSubmitting ? 'Opening email...' : 'Send Message →'}
-            </button>
+              // DIRECT PROTOCOL ENDPOINTS
+            </div>
 
-            {errorMsg && (
-              <p style={{ color: '#FCA5A5', fontSize: '0.85rem', textAlign: 'center', marginTop: '0.5rem' }}>
-                {errorMsg}
-              </p>
-            )}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', fontFamily: 'var(--font-mono)' }}>
+              {/* Email */}
+              <a
+                href="mailto:anishmogam@gmail.com"
+                style={{
+                  backgroundColor: 'var(--bg-surface)',
+                  border: '1px solid var(--border-hairline)',
+                  padding: '1.4rem 1.8rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <div>
+                  <div style={{ fontSize: '0.68rem', color: 'var(--text-tertiary)', marginBottom: '0.2rem' }}>
+                    VECTOR_01 // ELECTRONIC MAIL
+                  </div>
+                  <div style={{ fontSize: '0.95rem', color: 'var(--text-primary)', fontWeight: 600 }}>
+                    anishmogam@gmail.com
+                  </div>
+                </div>
+                <span style={{ color: 'var(--signal-orange)' }}>↗</span>
+              </a>
 
-            {successMsg && (
-              <p style={{ color: '#6EE7B7', fontSize: '0.85rem', textAlign: 'center', marginTop: '0.5rem' }}>
-                ✓ Opening your email client...
-              </p>
-            )}
-          </form>
+              {/* Telephone */}
+              <a
+                href="tel:+918605104120"
+                style={{
+                  backgroundColor: 'var(--bg-surface)',
+                  border: '1px solid var(--border-hairline)',
+                  padding: '1.4rem 1.8rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <div>
+                  <div style={{ fontSize: '0.68rem', color: 'var(--text-tertiary)', marginBottom: '0.2rem' }}>
+                    VECTOR_02 // TELEPHONY &amp; SMS
+                  </div>
+                  <div style={{ fontSize: '0.95rem', color: 'var(--text-primary)', fontWeight: 600 }}>
+                    +91 86051 04120
+                  </div>
+                </div>
+                <span style={{ color: 'var(--signal-orange)' }}>↗</span>
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/anish-mogam-33a2b6218/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  backgroundColor: 'var(--bg-surface)',
+                  border: '1px solid var(--border-hairline)',
+                  padding: '1.4rem 1.8rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <div>
+                  <div style={{ fontSize: '0.68rem', color: 'var(--text-tertiary)', marginBottom: '0.2rem' }}>
+                    VECTOR_03 // PROFESSIONAL NETWORK
+                  </div>
+                  <div style={{ fontSize: '0.95rem', color: 'var(--text-primary)', fontWeight: 600 }}>
+                    linkedin.com/in/anish-mogam
+                  </div>
+                </div>
+                <span style={{ color: 'var(--signal-orange)' }}>↗</span>
+              </a>
+
+              {/* GitHub */}
+              <a
+                href="https://github.com/Anish1302D"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  backgroundColor: 'var(--bg-surface)',
+                  border: '1px solid var(--border-hairline)',
+                  padding: '1.4rem 1.8rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <div>
+                  <div style={{ fontSize: '0.68rem', color: 'var(--text-tertiary)', marginBottom: '0.2rem' }}>
+                    VECTOR_04 // VERSION CONTROL REGISTRY
+                  </div>
+                  <div style={{ fontSize: '0.95rem', color: 'var(--text-primary)', fontWeight: 600 }}>
+                    github.com/Anish1302D
+                  </div>
+                </div>
+                <span style={{ color: 'var(--signal-orange)' }}>↗</span>
+              </a>
+            </div>
+          </div>
+
+          {/* Right Column: Terminal Transmission Form */}
+          <div
+            ref={formRef}
+            style={{
+              backgroundColor: 'var(--bg-surface)',
+              border: '1px solid var(--border-hairline)',
+              padding: '2.5rem',
+            }}
+          >
+            <div
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.72rem',
+                color: 'var(--signal-orange)',
+                letterSpacing: '0.08em',
+                marginBottom: '1.5rem',
+                borderBottom: '1px solid var(--border-hairline)',
+                paddingBottom: '0.6rem',
+              }}
+            >
+              // TRANSMISSION TERMINAL INTERFACE
+            </div>
+
+            <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem' }}>
+              <div>
+                <label
+                  htmlFor="name"
+                  style={{
+                    display: 'block',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.7rem',
+                    color: 'var(--text-tertiary)',
+                    marginBottom: '0.4rem',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  [PARAM: TRANSMITTER_IDENTITY]
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="e.g. Elena Rostova / Senior Staff Engineer"
+                  required
+                  style={{
+                    width: '100%',
+                    backgroundColor: 'var(--bg-canvas)',
+                    border: '1px solid var(--border-hairline)',
+                    borderRadius: 'var(--radius-xs)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.85rem',
+                    padding: '0.85rem 1rem',
+                    outline: 'none',
+                    transition: 'border-color 0.2s',
+                  }}
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="email"
+                  style={{
+                    display: 'block',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.7rem',
+                    color: 'var(--text-tertiary)',
+                    marginBottom: '0.4rem',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  [PARAM: RETURN_ADDRESS_EMAIL]
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="e.g. name@organization.com"
+                  required
+                  style={{
+                    width: '100%',
+                    backgroundColor: 'var(--bg-canvas)',
+                    border: '1px solid var(--border-hairline)',
+                    borderRadius: 'var(--radius-xs)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.85rem',
+                    padding: '0.85rem 1rem',
+                    outline: 'none',
+                    transition: 'border-color 0.2s',
+                  }}
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="subject"
+                  style={{
+                    display: 'block',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.7rem',
+                    color: 'var(--text-tertiary)',
+                    marginBottom: '0.4rem',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  [PARAM: TRANSMISSION_SUBJECT]
+                </label>
+                <input
+                  type="text"
+                  id="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  placeholder="e.g. Systems Engineering Role / Project Collaboration"
+                  required
+                  style={{
+                    width: '100%',
+                    backgroundColor: 'var(--bg-canvas)',
+                    border: '1px solid var(--border-hairline)',
+                    borderRadius: 'var(--radius-xs)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.85rem',
+                    padding: '0.85rem 1rem',
+                    outline: 'none',
+                    transition: 'border-color 0.2s',
+                  }}
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  style={{
+                    display: 'block',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.7rem',
+                    color: 'var(--text-tertiary)',
+                    marginBottom: '0.4rem',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  [PARAM: TRANSMISSION_PAYLOAD]
+                </label>
+                <textarea
+                  id="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Enter message payload, project scope, or opportunity details..."
+                  required
+                  style={{
+                    width: '100%',
+                    minHeight: '140px',
+                    backgroundColor: 'var(--bg-canvas)',
+                    border: '1px solid var(--border-hairline)',
+                    borderRadius: 'var(--radius-xs)',
+                    color: 'var(--text-primary)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.9rem',
+                    padding: '0.85rem 1rem',
+                    outline: 'none',
+                    resize: 'vertical',
+                    lineHeight: 1.6,
+                    transition: 'border-color 0.2s',
+                  }}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="btn-cadmium"
+                disabled={isSubmitting}
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                {isSubmitting ? 'DISPATCHING PAYLOAD TO CLIENT...' : 'TRANSMIT MESSAGE →'}
+              </button>
+
+              {errorMsg && (
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.75rem',
+                    color: '#EF4444',
+                    border: '1px solid rgba(239, 68, 68, 0.3)',
+                    backgroundColor: 'rgba(239, 68, 68, 0.08)',
+                    padding: '0.6rem 1rem',
+                  }}
+                >
+                  {errorMsg}
+                </div>
+              )}
+
+              {successMsg && (
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.75rem',
+                    color: 'var(--signal-green)',
+                    border: '1px solid rgba(16, 185, 129, 0.3)',
+                    backgroundColor: 'rgba(16, 185, 129, 0.08)',
+                    padding: '0.6rem 1rem',
+                  }}
+                >
+                  ✓ SUCCESS: Opening default mail transport client...
+                </div>
+              )}
+            </form>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-

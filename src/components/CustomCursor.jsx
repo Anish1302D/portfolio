@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { setupCursorListeners } from '../animations/cursorAnimations';
 
 export default function CustomCursor() {
-  const cursorRef = useRef(null);
-  const ringRef = useRef(null);
+  const reticleRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Detect touch / coarse pointer
+    // Check for touch / coarse pointer
     if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
       return;
     }
@@ -23,11 +22,6 @@ export default function CustomCursor() {
       mx = e.clientX;
       my = e.clientY;
       if (!isVisible) setIsVisible(true);
-
-      if (cursorRef.current) {
-        cursorRef.current.style.left = `${mx}px`;
-        cursorRef.current.style.top = `${my}px`;
-      }
     };
 
     const handleMouseLeave = () => {
@@ -38,22 +32,23 @@ export default function CustomCursor() {
       setIsVisible(true);
     };
 
-    const animRing = () => {
-      rx += (mx - rx) * 0.14;
-      ry += (my - ry) * 0.14;
+    const animReticle = () => {
+      // Crisp, responsive lerp
+      rx += (mx - rx) * 0.22;
+      ry += (my - ry) * 0.22;
 
-      if (ringRef.current) {
-        ringRef.current.style.left = `${rx}px`;
-        ringRef.current.style.top = `${ry}px`;
+      if (reticleRef.current) {
+        reticleRef.current.style.left = `${rx}px`;
+        reticleRef.current.style.top = `${ry}px`;
       }
 
-      animationFrameId = requestAnimationFrame(animRing);
+      animationFrameId = requestAnimationFrame(animReticle);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     document.addEventListener('mouseleave', handleMouseLeave);
     document.addEventListener('mouseenter', handleMouseEnter);
-    animationFrameId = requestAnimationFrame(animRing);
+    animationFrameId = requestAnimationFrame(animReticle);
 
     const cleanupListeners = setupCursorListeners(
       () => setIsHovered(true),
@@ -70,22 +65,15 @@ export default function CustomCursor() {
   }, [isVisible]);
 
   return (
-    <>
-      <div
-        id="cursor"
-        ref={cursorRef}
-        className={isHovered ? 'hovered' : ''}
-        style={{ opacity: isVisible ? 1 : 0 }}
-        aria-hidden="true"
-      />
-      <div
-        id="cursor-ring"
-        ref={ringRef}
-        className={isHovered ? 'hovered' : ''}
-        style={{ opacity: isVisible ? 1 : 0 }}
-        aria-hidden="true"
-      />
-    </>
+    <div
+      id="cursor-reticle"
+      ref={reticleRef}
+      className={isHovered ? 'hovered' : ''}
+      style={{ opacity: isVisible ? 1 : 0 }}
+      aria-hidden="true"
+    >
+      <div className="reticle-brackets" />
+      <div className="reticle-dot" />
+    </div>
   );
 }
-
