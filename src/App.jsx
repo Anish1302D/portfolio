@@ -6,9 +6,10 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 
 import Hero from './sections/Hero';
+import Projects from './sections/Projects';
+import SystemsExplorer from './sections/SystemsExplorer';
 import About from './sections/About';
 import Skills from './sections/Skills';
-import Projects from './sections/Projects';
 import Achievements from './sections/Achievements';
 import Resume from './sections/Resume';
 import Contact from './sections/Contact';
@@ -17,7 +18,7 @@ import { ScrollTrigger } from './animations/gsapConfig';
 
 export default function App() {
   useEffect(() => {
-    // Refresh ScrollTrigger after fonts and assets have initialized
+    // Refresh ScrollTrigger after DOM & fonts load
     const handleLoad = () => {
       ScrollTrigger.refresh();
     };
@@ -41,9 +42,10 @@ export default function App() {
 
       <main>
         <Hero />
+        <Projects />
+        <SystemsExplorer />
         <About />
         <Skills />
-        <Projects />
         <Achievements />
         <Resume />
         <Contact />
@@ -54,4 +56,3 @@ export default function App() {
     </>
   );
 }
-

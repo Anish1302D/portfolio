@@ -6,7 +6,7 @@ export default function BackToTop() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > 400);
+      setVisible(window.scrollY > 500);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -20,12 +20,12 @@ export default function BackToTop() {
   return (
     <button
       type="button"
-      className={`back-to-top ${visible ? 'visible' : ''}`}
+      className={`back-to-origin ${visible ? 'visible' : ''}`}
       onClick={handleClick}
-      aria-label="Back to top"
+      aria-label="Return to Origin"
     >
-      ↑
+      <span>↑</span>
+      <span>ORIGIN</span>
     </button>
   );
 }
-

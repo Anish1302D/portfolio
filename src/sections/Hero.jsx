@@ -1,78 +1,29 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
-import { initHeroAnimations } from '../animations/heroAnimations';
+import { gsap } from '../animations/gsapConfig';
 import { scrollToSection } from '../animations/transitionAnimations';
 import { useReducedMotion } from '../hooks/useReducedMotion';
-
-const phrases = [
-  'Building Beyond Limits',
-  'Engineering the Future',
-  'Crafting Intelligent Systems',
-  'Competing to Win',
-  'Solving Hard Problems'
-];
 
 export default function Hero() {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
-  const badgeRef = useRef(null);
-  const nameRef = useRef(null);
-  const nameGlowRef = useRef(null);
-  const subtitleRef = useRef(null);
-  const taglineRef = useRef(null);
-  const descRef = useRef(null);
-  const ctaRef = useRef(null);
-  const statsRef = useRef(null);
-  const scrollRef = useRef(null);
+  const headlineRef = useRef(null);
+  const metaRef = useRef(null);
+  const manifestRef = useRef(null);
+  const actionsRef = useRef(null);
+  const telemetryRef = useRef(null);
 
   const reducedMotion = useReducedMotion();
-  const [typedText, setTypedText] = useState('Building Beyond Limits');
 
-  // Typing animation effect
-  useEffect(() => {
-    let phraseIndex = 0;
-    let charIndex = phrases[0].length;
-    let isDeleting = true;
-    let timeoutId;
-
-    const tick = () => {
-      const currentPhrase = phrases[phraseIndex];
-
-      if (!isDeleting) {
-        charIndex++;
-        setTypedText(currentPhrase.slice(0, charIndex));
-        if (charIndex === currentPhrase.length) {
-          isDeleting = true;
-          timeoutId = setTimeout(tick, 1800);
-          return;
-        }
-      } else {
-        charIndex--;
-        setTypedText(currentPhrase.slice(0, charIndex));
-        if (charIndex === 0) {
-          isDeleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-        }
-      }
-
-      timeoutId = setTimeout(tick, isDeleting ? 50 : 80);
-    };
-
-    // Initial pause before deleting
-    timeoutId = setTimeout(tick, 1800);
-    return () => clearTimeout(timeoutId);
-  }, []);
-
-  // Canvas particle network background
+  // Architectural Grid Canvas — Subtle interactive engineering coordinates
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId;
+    let animId;
     let W, H;
-    let particles = [];
     let mouseX = -1000;
     let mouseY = -1000;
 
@@ -80,25 +31,6 @@ export default function Hero() {
       if (!canvas || !canvas.parentElement) return;
       W = canvas.width = window.innerWidth;
       H = canvas.height = canvas.parentElement.offsetHeight || window.innerHeight;
-      initParticles();
-    };
-
-    const initParticles = () => {
-      particles = [];
-      const count = Math.max(25, Math.floor((W * H) / 12000));
-      for (let i = 0; i < count; i++) {
-        const isGlowing = Math.random() < 0.15;
-        particles.push({
-          x: Math.random() * W,
-          y: Math.random() * H,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          r: isGlowing ? Math.random() * 2 + 1 : Math.random() * 1 + 0.3,
-          alpha: Math.random() * 0.6 + 0.1,
-          glow: isGlowing,
-          color: Math.random() < 0.5 ? '0,229,255' : '124,58,237'
-        });
-      }
     };
 
     resize();
@@ -115,71 +47,38 @@ export default function Hero() {
       mouseY = -1000;
     };
 
-    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mousemove', handleMouseMove, { passive: true });
     canvas.addEventListener('mouseleave', handleMouseLeave);
 
     const draw = () => {
       ctx.clearRect(0, 0, W, H);
 
-      // Draw and update particles
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        const dx = mouseX - p.x;
-        const dy = mouseY - p.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
+      const gridSize = 70;
+      ctx.lineWidth = 1;
 
-        if (dist < 120 && dist > 0) {
-          p.vx += (dx / dist) * 0.01;
-          p.vy += (dy / dist) * 0.01;
-        }
-
-        p.x += p.vx;
-        p.y += p.vy;
-        p.vx *= 0.99;
-        p.vy *= 0.99;
-
-        if (p.x < 0) p.x = W;
-        if (p.x > W) p.x = 0;
-        if (p.y < 0) p.y = H;
-        if (p.y > H) p.y = 0;
-
-        if (p.glow) {
-          const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 6);
-          g.addColorStop(0, `rgba(${p.color},${p.alpha})`);
-          g.addColorStop(1, `rgba(${p.color},0)`);
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r * 6, 0, Math.PI * 2);
-          ctx.fillStyle = g;
-          ctx.fill();
-        }
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${p.color},${p.alpha})`;
-        ctx.fill();
-      }
-
-      // Draw connecting lines
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const p = particles[i];
-          const q = particles[j];
-          const dx = p.x - q.x;
-          const dy = p.y - q.y;
+      // Draw faint technical blueprint crosshairs
+      for (let x = gridSize; x < W; x += gridSize) {
+        for (let y = gridSize; y < H; y += gridSize) {
+          const dx = mouseX - x;
+          const dy = mouseY - y;
           const dist = Math.sqrt(dx * dx + dy * dy);
+          const isNear = dist < 140;
 
-          if (dist < 100) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = `rgba(0,229,255,${0.06 * (1 - dist / 100)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
+          const size = isNear ? 5 : 2.5;
+          const alpha = isNear ? 0.35 : 0.08;
+
+          ctx.strokeStyle = isNear ? 'rgba(255, 75, 38, ' + alpha + ')' : 'rgba(255, 255, 255, ' + alpha + ')';
+
+          ctx.beginPath();
+          ctx.moveTo(x - size, y);
+          ctx.lineTo(x + size, y);
+          ctx.moveTo(x, y - size);
+          ctx.lineTo(x, y + size);
+          ctx.stroke();
         }
       }
 
-      animationFrameId = requestAnimationFrame(draw);
+      animId = requestAnimationFrame(draw);
     };
 
     draw();
@@ -188,129 +87,278 @@ export default function Hero() {
       window.removeEventListener('resize', resize);
       canvas.removeEventListener('mousemove', handleMouseMove);
       canvas.removeEventListener('mouseleave', handleMouseLeave);
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(animId);
     };
   }, []);
 
-  // GSAP entrance animation
+  // GSAP Entrance Sequence
   useGSAP(
     () => {
-      initHeroAnimations(
-        {
-          badgeRef: badgeRef.current,
-          nameRef: nameRef.current,
-          nameGlowRef: nameGlowRef.current,
-          subtitleRef: subtitleRef.current,
-          taglineRef: taglineRef.current,
-          descRef: descRef.current,
-          ctaRef: ctaRef.current,
-          statsRef: statsRef.current,
-          scrollRef: scrollRef.current
-        },
-        reducedMotion
-      );
+      if (reducedMotion) {
+        gsap.to([metaRef.current, headlineRef.current, manifestRef.current, actionsRef.current, telemetryRef.current], {
+          opacity: 1,
+          duration: 0.4,
+          stagger: 0.05,
+        });
+        return;
+      }
+
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      tl.fromTo(
+        metaRef.current,
+        { opacity: 0, y: -15 },
+        { opacity: 1, y: 0, duration: 0.6, delay: 0.15 }
+      )
+        .fromTo(
+          headlineRef.current,
+          { opacity: 0, y: 30, letterSpacing: '0.04em' },
+          { opacity: 1, y: 0, letterSpacing: '-0.02em', duration: 0.9, ease: 'power4.out' },
+          '-=0.3'
+        )
+        .fromTo(
+          manifestRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          '-=0.5'
+        )
+        .fromTo(
+          telemetryRef.current,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.7 },
+          '-=0.5'
+        )
+        .fromTo(
+          actionsRef.current,
+          { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.6 },
+          '-=0.4'
+        );
     },
     { scope: containerRef, dependencies: [reducedMotion] }
   );
 
-  const downloadResume = () => {
-    window.open('/anish-mogam-resume.html?print=true', '_blank');
-  };
-
   return (
-    <section id="hero" ref={containerRef}>
-      <canvas id="hero-canvas" ref={canvasRef} aria-hidden="true" />
-      <div className="hero-grid-bg" aria-hidden="true" />
-      <div className="hero-glow-1" aria-hidden="true" />
-      <div className="hero-glow-2" aria-hidden="true" />
+    <section
+      id="hero"
+      ref={containerRef}
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        paddingTop: '6rem',
+        paddingBottom: '4rem',
+        overflow: 'hidden',
+        borderBottom: '1px solid var(--border-hairline)',
+      }}
+    >
+      <canvas
+        ref={canvasRef}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'auto',
+          zIndex: 0,
+        }}
+        aria-hidden="true"
+      />
 
-      <div className="hero-content">
-        <div className="hero-badge" ref={badgeRef}>
-          <span></span> Available for Internships &amp; Hackathons
-        </div>
-
-        <div style={{ position: 'relative', display: 'inline-block' }}>
-          <h1 className="hero-name" ref={nameRef}>
-            ANISH MOGAM
-          </h1>
-          <div className="hero-name-glow" ref={nameGlowRef} aria-hidden="true">
-            ANISH MOGAM
+      <div className="content-wrapper" style={{ position: 'relative', zIndex: 1 }}>
+        {/* Top Architectural Metadata Strip */}
+        <div
+          ref={metaRef}
+          className="hero-meta-bar"
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.75rem',
+            color: 'var(--text-secondary)',
+            borderBottom: '1px solid var(--border-hairline)',
+            paddingBottom: '1rem',
+            marginBottom: '2.5rem',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+            <span style={{ color: 'var(--signal-orange)', fontWeight: 700 }}>[SYS_ID: 1302D]</span>
+            <span>COMPUTER SCIENCE // FULL STACK // AI SYSTEMS</span>
+          </div>
+          <div className="status-indicator live">
+            <span className="status-pulse-dot" />
+            <span>AVAILABLE FOR INTERNSHIPS &amp; SYSTEM ROLES</span>
           </div>
         </div>
 
-        <p className="hero-subtitle" ref={subtitleRef}>
-          Computer Science Student &nbsp;|&nbsp; Full Stack Developer &nbsp;|&nbsp; AI &amp; Hackathon Enthusiast
-        </p>
+        {/* Master Architectural Headline */}
+        <div style={{ marginBottom: '2.5rem' }}>
+          <h1
+            ref={headlineRef}
+            className="hero-headline"
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(3.4rem, 9.5vw, 7.8rem)',
+              fontWeight: 800,
+              lineHeight: 0.94,
+              color: 'var(--text-primary)',
+              letterSpacing: '-0.02em',
+              textTransform: 'uppercase',
+            }}
+          >
+            ANISH MOGAM
+          </h1>
+          <div
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: 'clamp(0.85rem, 1.8vw, 1.15rem)',
+              color: 'var(--signal-orange)',
+              letterSpacing: '0.08em',
+              marginTop: '1.25rem',
+              textTransform: 'uppercase',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+            }}
+          >
+            <span>FOUNDER, SPHERE COMMUNITY</span>
+            <span style={{ color: 'var(--text-tertiary)' }}>//</span>
+            <span>FULL STACK DEVELOPER</span>
+            <span style={{ color: 'var(--text-tertiary)' }}>//</span>
+            <span>AI BUILDER</span>
+          </div>
+        </div>
 
-        <h2 className="hero-tagline" ref={taglineRef}>
-          <span className="typing-text" id="typingText">
-            {typedText}
-          </span>
-        </h2>
+        {/* Asymmetrical Manifest & Telemetry Grid */}
+        <div
+          className="hero-manifest-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1.4fr 1fr',
+            gap: '4rem',
+            alignItems: 'start',
+            borderTop: '1px solid var(--border-hairline)',
+            paddingTop: '2.5rem',
+            marginBottom: '3rem',
+          }}
+        >
+          {/* Manifest Description */}
+          <div ref={manifestRef}>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '1.15rem',
+                lineHeight: 1.75,
+                color: 'var(--text-primary)',
+                marginBottom: '1.2rem',
+              }}
+            >
+              Engineering at the intersection of <strong>multimodal artificial intelligence</strong>, 
+              <strong>resilient backend architectures</strong>, and <strong>high-performance distributed web applications</strong>.
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontSize: '0.95rem',
+                lineHeight: 1.75,
+                color: 'var(--text-secondary)',
+              }}
+            >
+              Undergraduate at <strong>Savitribai Phule Pune University</strong> and founder of <strong>Sphere</strong> — 
+              a collaborative ecosystem empowering builders to compete in premier hackathons and ship production-grade software.
+            </p>
+          </div>
 
-        <p className="hero-desc" ref={descRef}>
-          Crafting intelligent systems at the intersection of software engineering and AI — 
-          turning ambitious ideas into production-grade products.
-        </p>
+          {/* Real Telemetry Data Board */}
+          <div
+            ref={telemetryRef}
+            style={{
+              backgroundColor: 'var(--bg-surface)',
+              border: '1px solid var(--border-hairline)',
+              padding: '1.5rem',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.75rem',
+            }}
+          >
+            <div
+              style={{
+                color: 'var(--text-tertiary)',
+                letterSpacing: '0.08em',
+                marginBottom: '1rem',
+                borderBottom: '1px solid var(--border-hairline)',
+                paddingBottom: '0.5rem',
+              }}
+            >
+              // ACTIVE ENGINEERING TELEMETRY
+            </div>
 
-        <div className="hero-cta" ref={ctaRef}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--text-secondary)' }}>COMMUNITY_ENTITY:</span>
+                <span style={{ color: 'var(--signal-orange)', fontWeight: 700 }}>SPHERE CLUB (FOUNDER)</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--text-secondary)' }}>FLAGSHIP_SYSTEM:</span>
+                <span style={{ color: 'var(--text-primary)' }}>INFRAGUARD AI (AMD SLINGSHOT)</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--text-secondary)' }}>ORBITAL_PLATFORM:</span>
+                <span style={{ color: 'var(--text-primary)' }}>KESSLERX (CESIUMJS + WEBSOCKETS)</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--text-secondary)' }}>INSTITUTION:</span>
+                <span style={{ color: 'var(--text-primary)' }}>SPPU PUNE (B.SC. CS)</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--text-secondary)' }}>VERIFIED_METRICS:</span>
+                <span style={{ color: 'var(--signal-green)' }}>5+ HACKATHONS // 10+ BUILDS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Command & Exploration Actions */}
+        <div
+          ref={actionsRef}
+          className="hero-actions"
+          style={{
+            display: 'flex',
+            gap: '1rem',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
           <a
             href="#projects"
-            className="btn-primary"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection('projects');
             }}
+            className="btn-cadmium"
           >
-            View Projects →
+            EXPLORE DEPLOYED SYSTEMS ↓
           </a>
-          <button
-            type="button"
-            onClick={downloadResume}
-            className="btn-secondary"
-          >
-            ⬇ Download Resume
-          </button>
           <a
-            href="#contact"
-            className="btn-ghost"
+            href="#architecture"
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection('contact');
+              scrollToSection('architecture');
             }}
+            className="btn-technical"
           >
-            Contact Me
+            INSPECT ARCHITECTURE DIAGRAM ↗
+          </a>
+          <a
+            href="/anish-mogam-resume.html?print=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-technical"
+          >
+            VIEW ATS RESUME (PDF) ↗
           </a>
         </div>
-
-        <div className="hero-stats" ref={statsRef}>
-          <div className="stat-item">
-            <div className="stat-num">5+</div>
-            <div className="stat-label">Hackathons</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-num">10+</div>
-            <div className="stat-label">Projects</div>
-          </div>
-          <div className="stat-item">
-            <div className="stat-num">2</div>
-            <div className="stat-label">Years Exp</div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        className="hero-scroll"
-        ref={scrollRef}
-        onClick={() => scrollToSection('about')}
-        role="button"
-        tabIndex={0}
-        aria-label="Scroll to About section"
-      >
-        <span>SCROLL</span>
-        <div className="scroll-arrow" aria-hidden="true" />
       </div>
     </section>
   );
 }
-

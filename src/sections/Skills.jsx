@@ -3,147 +3,77 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from '../animations/gsapConfig';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
-const skillCategories = [
+const matrixDisciplines = [
   {
-    name: 'Frontend Development',
-    icon: '⚛️',
-    iconBg: 'rgba(0, 229, 255, 0.1)',
-    colorClass: 'cyan',
-    tags: [
-      'React.js',
-      'Next.js',
-      'Tailwind CSS',
-      'TypeScript',
-      'HTML5 / CSS3',
-      'Framer Motion',
-      'shadcn/ui'
-    ]
+    code: '01',
+    name: 'CLIENT RUNTIMES & INTERFACES',
+    category: 'FRONTEND ARCHITECTURE',
+    desc: 'High-performance interactive interfaces, state coordination, component lifecycles, and responsive design systems.',
+    tags: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'HTML5 / CSS3', 'Framer Motion', 'shadcn/ui'],
   },
   {
-    name: 'Backend Development',
-    icon: '⚙️',
-    iconBg: 'rgba(124, 58, 237, 0.1)',
-    colorClass: 'purple',
-    tags: [
-      'Node.js',
-      'Express.js',
-      'Python',
-      'Flask',
-      'FastAPI',
-      'REST APIs',
-      'JWT Auth'
-    ]
+    code: '02',
+    name: 'BACKEND ARCHITECTURES & APIS',
+    category: 'CORE SERVICES',
+    desc: 'Resilient asynchronous microservices, rate-limiting layers, RESTful endpoints, and cryptographic JWT authentication.',
+    tags: ['Node.js', 'Express.js', 'Python', 'FastAPI', 'Flask', 'REST APIs', 'JWT Auth'],
   },
   {
-    name: 'AI / Machine Learning',
-    icon: '🤖',
-    iconBg: 'rgba(59, 130, 246, 0.1)',
-    colorClass: 'blue',
-    tags: [
-      'TensorFlow',
-      'ResNet CNN',
-      'XGBoost',
-      'SHAP / XAI',
-      'OpenCV',
-      'LangChain',
-      'Hugging Face'
-    ]
+    code: '03',
+    name: 'MACHINE INTELLIGENCE & VISION',
+    category: 'AI / ML PIPELINES',
+    desc: 'Multimodal neural networks, convolutional vision extractors, gradient-boosted trees, and Shapley explainability.',
+    tags: ['TensorFlow', 'ResNet CNN', 'XGBoost', 'SHAP / XAI', 'OpenCV', 'LangChain', 'Hugging Face', 'YOLOv8'],
   },
   {
-    name: 'Cloud & DevOps',
-    icon: '☁️',
-    iconBg: 'rgba(16, 185, 129, 0.1)',
-    colorClass: 'green',
-    tags: [
-      'Firebase',
-      'Vercel',
-      'Docker',
-      'GitHub Actions',
-      'Google Cloud',
-      'AWS (basics)'
-    ]
+    code: '04',
+    name: 'CLOUD ORCHESTRATION & DEVOPS',
+    category: 'DEPLOYMENT INFRASTRUCTURE',
+    desc: 'Containerized environments, automated continuous integration, cloud edge runtimes, and distributed asset delivery.',
+    tags: ['Docker', 'Vercel Edge', 'Firebase', 'GitHub Actions', 'Google Cloud', 'AWS (basics)'],
   },
   {
-    name: 'Databases',
-    icon: '🗄️',
-    iconBg: 'rgba(245, 158, 11, 0.1)',
-    customTagStyle: {
-      background: 'rgba(245, 158, 11, 0.08)',
-      color: '#FCD34D',
-      borderColor: 'rgba(245, 158, 11, 0.2)'
-    },
-    tags: ['MongoDB', 'PostgreSQL', 'MySQL', 'Firestore', 'Redis']
+    code: '05',
+    name: 'PERSISTENT STORAGE & GEO-INDEXES',
+    category: 'DATA STORAGE',
+    desc: 'Relational databases, spatial PostGIS queries, document stores, key-value in-memory caches, and NoSQL clusters.',
+    tags: ['PostgreSQL (PostGIS)', 'MongoDB', 'MySQL', 'Redis', 'Firestore'],
   },
   {
-    name: 'Tools & Others',
-    icon: '📱',
-    iconBg: 'rgba(239, 68, 68, 0.1)',
-    customTagStyle: {
-      background: 'rgba(239, 68, 68, 0.08)',
-      color: '#FCA5A5',
-      borderColor: 'rgba(239, 68, 68, 0.2)'
-    },
-    tags: ['Git / GitHub', 'Figma', 'Postman', 'VS Code', 'Linux', 'Jupyter']
-  }
+    code: '06',
+    name: 'ENGINEERING WORKBENCH & TOOLING',
+    category: 'DEVELOPER WORKFLOW',
+    desc: 'Version control, UNIX environments, interface prototyping, API test suites, and data science notebooks.',
+    tags: ['Git / GitHub', 'Linux', 'Figma', 'Postman', 'VS Code', 'Jupyter'],
+  },
 ];
 
 export default function Skills() {
   const containerRef = useRef(null);
-  const headerRef = useRef(null);
   const gridRef = useRef(null);
 
   const reducedMotion = useReducedMotion();
 
   useGSAP(
     () => {
-      if (reducedMotion) {
-        gsap.to([headerRef.current, gridRef.current], {
-          opacity: 1,
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: 'top 80%',
-            once: true
-          }
-        });
-        return;
-      }
+      if (reducedMotion) return;
 
-      // Header entrance
-      gsap.fromTo(
-        headerRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: 'top 85%',
-            once: true
-          }
-        }
-      );
-
-      // Staggered categories entrance
       if (gridRef.current) {
-        const cards = gridRef.current.querySelectorAll('.skill-category');
+        const blocks = gridRef.current.querySelectorAll('.matrix-block');
         gsap.fromTo(
-          cards,
-          { opacity: 0, y: 35, scale: 0.97 },
+          blocks,
+          { opacity: 0, y: 30 },
           {
             opacity: 1,
             y: 0,
-            scale: 1,
             duration: 0.7,
-            stagger: 0.08,
+            stagger: 0.1,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: gridRef.current,
               start: 'top 85%',
-              once: true
-            }
+              once: true,
+            },
           }
         );
       }
@@ -152,34 +82,105 @@ export default function Skills() {
   );
 
   return (
-    <section id="skills" ref={containerRef}>
-      <div className="skills-inner">
-        <div className="skills-header" ref={headerRef}>
-          <div className="section-label">Technical Skills</div>
-          <h2 className="section-title">
-            My <span className="highlight">Arsenal</span>
+    <section
+      id="skills"
+      ref={containerRef}
+      style={{
+        backgroundColor: 'var(--bg-canvas)',
+        borderBottom: '1px solid var(--border-hairline)',
+        padding: '7rem 0',
+      }}
+    >
+      <div className="content-wrapper">
+        {/* Technical Header */}
+        <div className="section-meta-header">
+          <div className="section-code">
+            SECTION // [04] — TECHNICAL ARSENAL &amp; CAPABILITIES
+          </div>
+          <div style={{ color: 'var(--text-tertiary)' }}>
+            6 SUBSYSTEM DISCIPLINES // PRODUCTION STACK
+          </div>
+        </div>
+
+        <div style={{ marginBottom: '4rem' }}>
+          <h2 className="section-title-large">
+            CAPABILITY SPECIFICATION MATRIX
           </h2>
-          <p className="section-desc">
-            A curated stack of technologies I use to build intelligent, scalable, and beautiful products.
+          <p className="section-lead">
+            Structured inventory of production languages, runtime frameworks, neural modeling toolkits, 
+            and infrastructure platforms actively deployed across systems.
           </p>
         </div>
 
-        <div className="skills-grid" ref={gridRef}>
-          {skillCategories.map((category) => (
-            <div className="skill-category" key={category.name}>
-              <div className="skill-cat-header">
-                <div className="skill-cat-icon" style={{ background: category.iconBg }}>
-                  {category.icon}
-                </div>
-                <span className="skill-cat-name">{category.name}</span>
+        {/* Matrix Grid */}
+        <div
+          ref={gridRef}
+          className="matrix-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+            gap: '1.5rem',
+          }}
+        >
+          {matrixDisciplines.map((d) => (
+            <div
+              key={d.code}
+              className="matrix-block"
+              style={{
+                backgroundColor: 'var(--bg-surface)',
+                border: '1px solid var(--border-hairline)',
+                padding: '2.2rem',
+                position: 'relative',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'baseline',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.72rem',
+                  marginBottom: '1rem',
+                  borderBottom: '1px solid var(--border-hairline)',
+                  paddingBottom: '0.6rem',
+                }}
+              >
+                <span style={{ color: 'var(--signal-orange)', fontWeight: 700 }}>
+                  SUBSYS_{d.code}
+                </span>
+                <span style={{ color: 'var(--text-tertiary)' }}>
+                  {d.category}
+                </span>
               </div>
-              <div className="skill-tags">
-                {category.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className={`skill-tag ${category.colorClass ? category.colorClass : ''}`}
-                    style={category.customTagStyle || {}}
-                  >
+
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 700,
+                  fontSize: '1.1rem',
+                  letterSpacing: '-0.01em',
+                  color: 'var(--text-primary)',
+                  marginBottom: '0.75rem',
+                }}
+              >
+                {d.name}
+              </h3>
+
+              <p
+                style={{
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.88rem',
+                  color: 'var(--text-secondary)',
+                  lineHeight: 1.7,
+                  marginBottom: '1.8rem',
+                }}
+              >
+                {d.desc}
+              </p>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {d.tags.map((tag) => (
+                  <span key={tag} className="tech-tag">
                     {tag}
                   </span>
                 ))}
@@ -191,4 +192,3 @@ export default function Skills() {
     </section>
   );
 }
-
