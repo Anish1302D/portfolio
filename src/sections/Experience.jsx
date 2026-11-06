@@ -125,7 +125,7 @@ export default function Experience() {
       {/* Sticky 100vh Theater / Viewport Window */}
       <div
         id="exp-sticky-viewport"
-        className="sticky top-0 w-full h-[100dvh] overflow-hidden bg-[#070709] flex flex-col justify-between select-none"
+        className="sticky top-0 w-full h-[100dvh] overflow-hidden bg-[#070709] flex flex-col justify-between select-none pt-20 md:pt-24"
       >
         {/* Layer 0: Background Ambient Atmospheric Grid */}
         <div className="absolute inset-0 pointer-events-none opacity-20">
@@ -154,27 +154,8 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* Top Minimalist Editorial HUD Bar */}
-        <header className="relative z-30 w-full px-6 md:px-14 pt-6 pb-4 flex items-center justify-between border-b border-white/[0.08] backdrop-blur-md bg-[#070709]/80">
-          <div className="flex items-center gap-4">
-            <span
-              ref={hudPhaseRef}
-              className="text-[11px] font-semibold tracking-widest uppercase text-neutral-400 font-mono"
-            >
-              ACADEMIC FOUNDATION &bull; S.P. COLLEGE
-            </span>
-          </div>
-
-          {/* Progress Tracker Bar */}
-          <div className="flex items-center gap-3">
-            <div className="w-24 sm:w-36 h-[2px] bg-white/10 rounded-full overflow-hidden">
-              <div ref={hudProgressRef} className="h-full bg-white transition-all duration-75 w-0" />
-            </div>
-          </div>
-        </header>
-
         {/* Center: Massive Horizontal Spatial Canvas */}
-        <div className="relative z-20 flex-1 w-full overflow-hidden flex items-center">
+        <div className="relative z-20 flex-1 w-full overflow-hidden flex items-center py-4 md:py-6">
           <div
             ref={stageRef}
             id="exp-horizontal-stage"
@@ -184,13 +165,13 @@ export default function Experience() {
             {/* ================= INTRO ENVIRONMENT (0vw - 90vw) ================= */}
             <div className="exp-panel flex-shrink-0 w-[95vw] md:w-[85vw] px-8 md:px-16 lg:px-24 flex flex-col justify-center">
               <div className="max-w-3xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] text-[10px] font-semibold tracking-widest uppercase text-neutral-300 mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] text-[10px] font-semibold tracking-widest uppercase text-neutral-300 mb-4 md:mb-6">
                   <span>ACADEMIC &amp; LEADERSHIP JOURNEY</span>
                 </div>
-                <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight text-white leading-[0.88] mb-8">
+                <h2 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.9] mb-5 md:mb-8">
                   MY<br />BACKGROUND
                 </h2>
-                <p className="text-base sm:text-lg md:text-xl text-neutral-300 leading-relaxed max-w-xl font-normal">
+                <p className="text-sm sm:text-base md:text-lg text-neutral-300 leading-relaxed max-w-xl font-normal">
                   Computer Science education at S.P. College, Pune (affiliated with SPPU) and community leadership founding Sphere Community.
                 </p>
               </div>
@@ -201,37 +182,37 @@ export default function Experience() {
               {/* Background Parallax Date Typography */}
               <div
                 ref={(el) => (dateBgsRef.current[0] = el)}
-                className="exp-date-bg absolute -top-8 right-12 md:right-28 text-[12vw] md:text-[14vw] font-black uppercase text-white/[0.04] tracking-tighter select-none pointer-events-none will-change-transform"
+                className="exp-date-bg absolute top-4 md:top-8 right-12 md:right-28 text-[12vw] md:text-[14vw] font-black uppercase text-white/[0.04] tracking-tighter select-none pointer-events-none will-change-transform"
               >
                 2024 — PRESENT
               </div>
 
               <div className="relative z-10 max-w-4xl">
                 {/* Eyebrow & Date */}
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="text-xs font-semibold tracking-widest uppercase text-neutral-400">
+                <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
+                  <span className="text-[11px] md:text-xs font-semibold tracking-widest uppercase text-neutral-400">
                     2024 — PRESENT
                   </span>
-                  <span className="h-[1px] w-12 bg-white/20" />
-                  <span className="text-xs font-bold tracking-widest uppercase text-white">
+                  <span className="h-[1px] w-8 md:w-12 bg-white/20" />
+                  <span className="text-[11px] md:text-xs font-bold tracking-widest uppercase text-white">
                     EDUCATION &bull; S.P. COLLEGE, PUNE (SPPU)
                   </span>
                 </div>
 
                 {/* Oversized Typographic Role Title */}
-                <h3 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.92] mb-6">
+                <h3 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[0.95] mb-4 md:mb-6">
                   B.SC. COMPUTER<br />SCIENCE
                 </h3>
 
                 {/* Narrative Summary */}
-                <p className="text-sm sm:text-base md:text-lg text-neutral-300 leading-relaxed max-w-2xl mb-8">
+                <p className="text-xs sm:text-sm md:text-base text-neutral-300 leading-relaxed max-w-2xl mb-5 md:mb-6">
                   Pursuing Bachelor of Science in Computer Science at Sir Parashurambhau (S.P.) College, Pune, affiliated with Savitribai Phule Pune University. Focusing on computational theory, algorithmic problem solving, data structures, and hands-on software development.
                 </p>
 
                 {/* Specifications Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/10 max-w-3xl mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 pt-4 md:pt-6 border-t border-white/10 max-w-3xl">
                   <div>
-                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
+                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1 font-mono">
                       CURRICULUM
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
@@ -239,7 +220,7 @@ export default function Experience() {
                     </div>
                   </div>
                   <div>
-                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
+                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1 font-mono">
                       APPLIED STACK
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
@@ -247,7 +228,7 @@ export default function Experience() {
                     </div>
                   </div>
                   <div>
-                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
+                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1 font-mono">
                       COMPETITIONS
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
@@ -263,40 +244,40 @@ export default function Experience() {
               {/* Background Parallax Date Typography */}
               <div
                 ref={(el) => (dateBgsRef.current[1] = el)}
-                className="exp-date-bg absolute -top-8 right-12 md:right-28 text-[12vw] md:text-[14vw] font-black uppercase text-white/[0.04] tracking-tighter select-none pointer-events-none will-change-transform"
+                className="exp-date-bg absolute top-4 md:top-8 right-12 md:right-28 text-[12vw] md:text-[14vw] font-black uppercase text-white/[0.04] tracking-tighter select-none pointer-events-none will-change-transform"
               >
                 2024 — PRESENT
               </div>
 
               <div className="relative z-10 max-w-4xl">
                 {/* Eyebrow & Date */}
-                <div className="flex items-center gap-4 mb-4">
-                  <span className="text-xs font-semibold tracking-widest uppercase text-neutral-400">
+                <div className="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
+                  <span className="text-[11px] md:text-xs font-semibold tracking-widest uppercase text-neutral-400">
                     2024 — PRESENT
                   </span>
-                  <span className="h-[1px] w-12 bg-white/20" />
-                  <span className="text-xs font-bold tracking-widest uppercase text-white">
+                  <span className="h-[1px] w-8 md:w-12 bg-white/20" />
+                  <span className="text-[11px] md:text-xs font-bold tracking-widest uppercase text-white">
                     COMMUNITY LEADERSHIP
                   </span>
-                  <span className="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full border border-white/20 text-[10px] font-semibold uppercase text-neutral-300">
+                  <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full border border-white/20 text-[10px] font-semibold uppercase text-neutral-300">
                     ACTIVE
                   </span>
                 </div>
 
                 {/* Oversized Typographic Role Title */}
-                <h3 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.92] mb-6">
+                <h3 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight text-white leading-[0.95] mb-4 md:mb-6">
                   FOUNDER,<br />SPHERE COMMUNITY
                 </h3>
 
                 {/* Narrative Summary */}
-                <p className="text-sm sm:text-base md:text-lg text-neutral-300 leading-relaxed max-w-2xl mb-8">
+                <p className="text-xs sm:text-sm md:text-base text-neutral-300 leading-relaxed max-w-2xl mb-5 md:mb-6">
                   Founded Sphere Community (sphere-club.vercel.app) to bring student developers and tech peers together in Pune for collaborative project development, peer learning, and shared technical growth.
                 </p>
 
                 {/* Specifications Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/10 max-w-3xl mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 pt-4 md:pt-6 border-t border-white/10 max-w-3xl">
                   <div>
-                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
+                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1 font-mono">
                       COORDINATION
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
@@ -304,7 +285,7 @@ export default function Experience() {
                     </div>
                   </div>
                   <div>
-                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
+                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1 font-mono">
                       COLLABORATION
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
@@ -312,7 +293,7 @@ export default function Experience() {
                     </div>
                   </div>
                   <div>
-                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
+                    <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1 font-mono">
                       PROJECT BUILDS
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
@@ -326,8 +307,8 @@ export default function Experience() {
           </div>
         </div>
 
-        {/* Bottom Minimalist Editorial Navigation & Spatial Status Bar */}
-        <footer className="relative z-30 w-full px-6 md:px-14 py-4 flex items-center justify-between border-t border-white/[0.08] backdrop-blur-md bg-[#070709]/80">
+        {/* Bottom Minimalist Editorial Navigation & Unified Spatial Status Bar */}
+        <footer className="relative z-30 w-full px-6 md:px-14 py-3 md:py-4 flex flex-wrap items-center justify-between gap-3 border-t border-white/[0.08] backdrop-blur-md bg-[#070709]/80">
           <div className="flex items-center gap-2 sm:gap-4">
             <button
               type="button"
@@ -343,6 +324,19 @@ export default function Experience() {
             >
               SPHERE COMMUNITY
             </button>
+          </div>
+
+          {/* Phase HUD & Progress Tracker Bar */}
+          <div className="flex items-center gap-4">
+            <span
+              ref={hudPhaseRef}
+              className="text-[10px] md:text-[11px] font-semibold tracking-widest uppercase text-neutral-400 font-mono hidden sm:inline-block"
+            >
+              ACADEMIC FOUNDATION &bull; S.P. COLLEGE
+            </span>
+            <div className="w-20 sm:w-32 h-[2px] bg-white/10 rounded-full overflow-hidden">
+              <div ref={hudProgressRef} className="h-full bg-white transition-all duration-75 w-0" />
+            </div>
           </div>
         </footer>
       </div>
