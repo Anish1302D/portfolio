@@ -6,7 +6,7 @@ export default function Navbar({ onOpenContact }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'background', 'skills', 'projects', 'concepts', 'areas-of-focus'];
+      const sections = ['home', 'about', 'background', 'skills', 'projects', 'certifications', 'areas-of-focus'];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -30,7 +30,7 @@ export default function Navbar({ onOpenContact }) {
     { id: 'background', label: 'BACKGROUND' },
     { id: 'skills', label: 'SKILLS' },
     { id: 'projects', label: 'PROJECTS' },
-    { id: 'concepts', label: 'CONCEPTS' },
+    { id: 'certifications', label: 'CERTIFICATIONS' },
     { id: 'areas-of-focus', label: 'AREAS OF FOCUS' },
   ];
 
