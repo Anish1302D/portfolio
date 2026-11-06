@@ -59,3 +59,4 @@ export function animateSplitText(target, options = {}) {
     );
   }
 }
+

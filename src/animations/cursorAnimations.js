@@ -29,3 +29,4 @@ export function setupCursorListeners(onHoverEnter, onHoverLeave) {
     document.removeEventListener('mouseout', handlePointerOut);
   };
 }
+

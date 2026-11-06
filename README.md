@@ -116,3 +116,4 @@ All static files in `public/` (`robots.txt`, `sitemap.xml`, `googlea0f6eda44daf4
 - **Reduced Motion Support:** All GSAP timelines and CSS animations check `prefers-reduced-motion: reduce`. Users with motion sensitivities receive clean, instant or opacity-only transitions without parallax or large translations.
 - **Touch Screen Optimization:** Custom cursor and ring elements are automatically disabled on coarse pointer/touch devices (`@media (hover: none), (pointer: coarse)`), preserving native mobile touch interactions.
 - **Code Splitting:** Configured Rollup vendor and GSAP chunk separation in `vite.config.js` for optimal caching and fast First Contentful Paint (FCP).
+

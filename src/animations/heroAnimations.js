@@ -157,3 +157,4 @@ export function initHeroAnimations(refs, reducedMotion = false) {
 
   return tl;
 }
+

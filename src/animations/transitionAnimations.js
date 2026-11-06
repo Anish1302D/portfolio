@@ -17,3 +17,4 @@ export function scrollToSection(id) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
+
