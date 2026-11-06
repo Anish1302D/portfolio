@@ -359,3 +359,4 @@ export default function WorksWheel({ items = [], label = "Works '26", action = "
 
   return <div ref={containerRef} className="w-full h-full relative" />;
 }
+

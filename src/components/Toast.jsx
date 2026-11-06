@@ -17,3 +17,4 @@ export default function Toast({ toasts }) {
     </div>
   );
 }
+
