@@ -6,9 +6,7 @@ export default function Navbar({ onOpenContact }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'experience', 'projects', 'landing-pages', 'services'];
-      const scrollY = window.scrollY;
-
+      const sections = ['home', 'about', 'background', 'skills', 'projects', 'concepts', 'areas-of-focus'];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -28,11 +26,12 @@ export default function Navbar({ onOpenContact }) {
 
   const navLinks = [
     { id: 'home', label: 'HOME' },
-    { id: 'about', label: 'ABOUT ME' },
-    { id: 'experience', label: 'EXPERIENCE' },
+    { id: 'about', label: 'ABOUT' },
+    { id: 'background', label: 'BACKGROUND' },
+    { id: 'skills', label: 'SKILLS' },
     { id: 'projects', label: 'PROJECTS' },
-    { id: 'landing-pages', label: 'LANDING PAGES' },
-    { id: 'services', label: 'SERVICES' },
+    { id: 'concepts', label: 'CONCEPTS' },
+    { id: 'areas-of-focus', label: 'AREAS OF FOCUS' },
   ];
 
   return (
@@ -43,19 +42,19 @@ export default function Navbar({ onOpenContact }) {
           href="#home"
           className="group font-black text-xl tracking-tight text-black flex items-center select-none"
         >
-          <span>ANISH</span>
+          <span>ANISH MOGAM</span>
           <span className="inline-block w-2 h-2 bg-black rounded-full ml-1.5 transition-transform group-hover:scale-150 duration-200"></span>
         </a>
 
         {/* Center Navigation Links (Editorial Floating Pill) */}
-        <nav className="hidden lg:flex items-center gap-1 p-1 bg-white/95 border border-[#E2E2E2] rounded-full shadow-sm text-xs font-semibold tracking-wider text-neutral-600">
+        <nav className="hidden xl:flex items-center gap-1 p-1 bg-white/95 border border-[#E2E2E2] rounded-full shadow-sm text-xs font-semibold tracking-wider text-neutral-600">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
               <a
                 key={link.id}
                 href={`#${link.id}`}
-                className={`px-4 py-2 rounded-full transition whitespace-nowrap ${
+                className={`px-3.5 py-1.5 rounded-full transition whitespace-nowrap text-[11px] font-semibold tracking-wider ${
                   isActive
                     ? 'border border-neutral-300 text-black font-bold shadow-xs'
                     : 'border border-transparent hover:border-neutral-200 hover:text-black'
@@ -71,10 +70,10 @@ export default function Navbar({ onOpenContact }) {
         <div className="flex items-center gap-1.5 md:gap-2 p-1.5 bg-white/95 border border-[#E2E2E2] rounded-full shadow-sm">
           {/* LinkedIn */}
           <a
-            href="https://www.linkedin.com/in/anish-mogam-33a2b6218"
+            href="https://www.linkedin.com/in/anish-mogam/"
             target="_blank"
             rel="noopener noreferrer"
-            title="LinkedIn"
+            title="LinkedIn Profile"
             className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 hover:text-black"
           >
             <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
@@ -87,7 +86,7 @@ export default function Navbar({ onOpenContact }) {
             href="https://github.com/Anish1302D"
             target="_blank"
             rel="noopener noreferrer"
-            title="GitHub"
+            title="GitHub Profile"
             className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 hover:text-black"
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -109,16 +108,16 @@ export default function Navbar({ onOpenContact }) {
           {/* Contact Trigger */}
           <button
             onClick={onOpenContact}
-            className="px-3 py-1 rounded-full bg-black text-white hover:bg-neutral-800 text-[11px] font-bold tracking-wider uppercase transition"
+            className="px-3.5 py-1 rounded-full bg-black text-white hover:bg-neutral-800 text-[11px] font-bold tracking-wider uppercase transition cursor-pointer"
           >
-            TALK
+            CONTACT
           </button>
 
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setIsMobileOpen(true)}
             aria-label="Open Menu"
-            className="lg:hidden w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 ml-1"
+            className="xl:hidden w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 ml-1"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <line x1="4" x2="20" y1="7" y2="7"></line>
@@ -152,7 +151,7 @@ export default function Navbar({ onOpenContact }) {
                 ✕
               </button>
             </div>
-            <nav className="flex flex-col gap-4 mt-8 text-base font-bold tracking-wider">
+            <nav className="flex flex-col gap-4 mt-8 text-sm font-bold tracking-wider">
               {navLinks.map((link) => (
                 <a
                   key={link.id}
@@ -177,16 +176,17 @@ export default function Navbar({ onOpenContact }) {
                   setIsMobileOpen(false);
                   onOpenContact();
                 }}
-                className="py-2 text-left text-black font-extrabold hover:underline"
+                className="py-2 text-left text-black font-extrabold hover:underline cursor-pointer"
               >
                 GET IN TOUCH ↗
               </button>
             </nav>
           </div>
           <div className="pt-6 border-t border-neutral-200">
-            <p className="text-xs uppercase tracking-widest text-neutral-400 mb-1">ANISH MOGAM</p>
-            <p className="text-xs text-neutral-600">Full Stack Developer & AI Builder</p>
-            <p className="text-[11px] text-neutral-400 mt-2 font-mono">Pune, MH, India</p>
+            <p className="text-xs uppercase tracking-widest text-neutral-900 font-bold mb-1">ANISH MOGAM</p>
+            <p className="text-xs text-neutral-600">B.Sc. Computer Science &bull; S.P. College, SPPU</p>
+            <p className="text-[11px] text-neutral-500 mt-1">Founder &bull; Sphere Community</p>
+            <p className="text-[11px] text-neutral-400 mt-1 font-mono">Pune, Maharashtra, India</p>
           </div>
         </div>
       </div>

@@ -1,58 +1,61 @@
 import React, { useState } from 'react';
 
 export default function Services({ onInquire }) {
-  const [activeItem, setActiveItem] = useState(2); // AI & Telemetry active by default
+  const [activeItem, setActiveItem] = useState(0);
 
-  const services = [
+  const focusAreas = [
     {
       id: 0,
-      title: 'UI/UX & ARCHITECTURE',
-      description: 'User research, wireframing, interactive prototyping, and usability validation. Transforming complex workflows into effortless, delightful digital experiences.',
-      deliverables: 'DELIVERABLES: USER FLOWS, WIREFRAMES, DESIGN TOKENS, FIGMA SPECS',
-      serviceKey: 'UI/UX & Architecture'
+      title: 'FULL-STACK DEVELOPMENT',
+      description: 'Building responsive frontend interfaces using React, Vite, and Tailwind CSS, coupled with robust backend APIs in FastAPI or Node.js/Express. Focused on modular component design, RESTful protocols, and relational (PostgreSQL) or document (MongoDB) database architectures.',
+      capabilities: 'CAPABILITIES: REACT, VITE, FASTAPI, NODE.JS, RESTFUL APIS, POSTGRESQL',
+      focusKey: 'Full-Stack Development'
     },
     {
       id: 1,
-      title: 'FULL STACK WEB SYSTEMS',
-      description: 'Bespoke web aesthetics with flawless responsive layouts, typography hierarchy, high-contrast dark modes, and crisp interactive animations backed by robust Node.js and cloud infrastructure.',
-      deliverables: 'DELIVERABLES: FULL RESPONSIVE WEB APPS, REACT/NEXT.JS, CLOUD APIS',
-      serviceKey: 'Full Stack Web Systems'
+      title: 'APPLIED AI & MACHINE LEARNING',
+      description: 'Implementing practical machine learning and computer vision solutions. Experience integrating YOLOv8 for object and defect detection, PyTorch/ResNet for visual classification, and XGBoost with SHAP explainability for interpretable predictive systems.',
+      capabilities: 'CAPABILITIES: PYTORCH, YOLOV8, OPENCV, RESNET, XGBOOST, SHAP (EXPLAINABLE AI)',
+      focusKey: 'Applied AI & Machine Learning'
     },
     {
       id: 2,
-      title: 'AI & TELEMETRY SYSTEMS',
-      description: 'Intelligent predictive modeling, real-time telemetry processing, and edge computer vision (YOLOv8, PyTorch, Slingshot anomaly detection). Engineered to automate mission-critical pipelines.',
-      deliverables: 'DELIVERABLES: ML TELEMETRY PIPELINE, REAL-TIME DATA STREAMS, EDGE MODELS',
-      serviceKey: 'AI & Telemetry Systems'
+      title: 'INTERACTIVE WEB EXPERIENCES',
+      description: 'Designing fluid, modern web animations and spatial interactions using GSAP ScrollTrigger timelines, responsive editorial layouts, and 3D canvas rendering using CesiumJS and Three.js.',
+      capabilities: 'CAPABILITIES: GSAP MOTION, SCROLLTRIGGER, THREE.JS, CESIUMJS 3D GLOBE',
+      focusKey: 'Interactive Web Experiences'
     },
     {
       id: 3,
-      title: 'HIGH-PERFORMANCE LANDING PAGES',
-      description: 'High-converting editorial landing pages tailored for startups, developer tools, and product launches. Engineered with GSAP motion and WebGL shaders to capture attention.',
-      deliverables: 'DELIVERABLES: EDITORIAL LAYOUT SYSTEM, GSAP/WEBGL SHADERS, PERFORMANCE 100',
-      serviceKey: 'Landing Page Design'
+      title: 'COMMUNITY & COLLABORATION',
+      description: 'Founder of Sphere Community, facilitating collaborative technical discussions, code sessions, and project sprints for student developers in Pune. Enthusiastic about open-source contributions, peer learning, and hackathon teamwork.',
+      capabilities: 'CAPABILITIES: SPHERE COMMUNITY LEADERSHIP, PEER ONBOARDING, TECHNICAL COLLABORATION',
+      focusKey: 'Community & Collaboration'
     }
   ];
 
   return (
     <section
       className="max-w-[1400px] mx-auto px-6 md:px-14 py-20"
-      data-purpose="services-section"
-      id="services"
+      data-purpose="areas-of-focus-section"
+      id="areas-of-focus"
     >
       {/* Centered Header */}
       <div className="text-center max-w-2xl mx-auto mb-14">
+        <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-400 block mb-1">
+          CAPABILITIES &bull; TECHNICAL INTERESTS
+        </span>
         <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-neutral-900 mb-4">
-          THE SERVICES WE PROVIDE
+          AREAS OF FOCUS
         </h2>
         <p className="text-xs md:text-xs uppercase font-medium leading-relaxed tracking-wider text-neutral-500">
-          CREATING VISUALLY APPEALING AND FUNCTIONAL WEBSITES TAILORED TO CLIENT AND RESEARCH GOALS. PROVIDING A CONSISTENT USER EXPERIENCE ACROSS PLATFORMS.
+          TECHNICAL INTERESTS, CORE COMPETENCIES AND AREAS OF ACTIVE STUDY AS A COMPUTER SCIENCE UNDERGRADUATE AND SOFTWARE DEVELOPER.
         </p>
       </div>
 
-      {/* Service Pill Rows Accordion */}
+      {/* Accordion Rows */}
       <div className="max-w-4xl mx-auto flex flex-col space-y-3.5">
-        {services.map((item, idx) => {
+        {focusAreas.map((item, idx) => {
           const isActive = activeItem === idx;
 
           return (
@@ -113,18 +116,18 @@ export default function Services({ onInquire }) {
                   }`}
                 >
                   <span className="text-[11px] font-mono text-neutral-400">
-                    {item.deliverables}
+                    {item.capabilities}
                   </span>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      if (onInquire) onInquire(item.serviceKey);
+                      if (onInquire) onInquire(item.focusKey);
                     }}
                     className={`text-xs font-bold underline cursor-pointer hover:opacity-80 ${
                       isActive ? 'text-white' : 'text-black'
                     }`}
                   >
-                    INQUIRE ↗
+                    CONNECT / DISCUSS ↗
                   </button>
                 </div>
               </div>
@@ -135,4 +138,3 @@ export default function Services({ onInquire }) {
     </section>
   );
 }
-

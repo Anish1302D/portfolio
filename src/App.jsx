@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Experience from './sections/Experience';
+import Skills from './sections/Skills';
 import FeaturedProjects from './sections/FeaturedProjects';
 import LandingPages from './sections/LandingPages';
 import Services from './sections/Services';
@@ -15,7 +16,7 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
-  const [initialService, setInitialService] = useState('Full Stack Web Systems');
+  const [initialService, setInitialService] = useState('Internship & Project Opportunity');
   const [toasts, setToasts] = useState([]);
 
   const addToast = (message) => {
@@ -31,42 +32,39 @@ export default function App() {
     setIsProjectModalOpen(true);
   };
 
-  const handleOpenContact = (serviceName = 'Full Stack Web Systems') => {
-    setInitialService(serviceName);
+  const handleOpenContact = (topic = 'Internship & Project Opportunity') => {
+    setInitialService(topic);
     setIsContactOpen(true);
   };
 
   return (
     <div className="min-h-screen bg-[#FAFAFA] text-[#121212] selection:bg-black selection:text-white">
       {/* Editorial Navigation */}
-      <Navbar onOpenContact={() => handleOpenContact('Full Stack Web Systems')} />
+      <Navbar onOpenContact={() => handleOpenContact('Internship & Project Opportunity')} />
 
       {/* Main Single Page Sections */}
       <main>
         <Hero
-          onSelectService={(idx) => {
-            const serviceNames = [
-              'UI/UX & Architecture',
-              'Full Stack Web Systems',
-              'AI & Telemetry Systems'
-            ];
-            handleOpenContact(serviceNames[idx] || 'Full Stack Web Systems');
+          onSelectFocus={(topic) => {
+            handleOpenContact(topic || 'Full-Stack Development');
           }}
         />
 
-        <About onOpenContact={() => handleOpenContact('General Inquiry')} />
+        <About onOpenContact={() => handleOpenContact('General Conversation')} />
 
         <Experience />
+
+        <Skills />
 
         <FeaturedProjects onSelectProject={handleOpenProject} />
 
         <LandingPages onSelectProject={handleOpenProject} />
 
-        <Services onInquire={(serviceKey) => handleOpenContact(serviceKey)} />
+        <Services onInquire={(focusKey) => handleOpenContact(focusKey)} />
       </main>
 
       {/* Editorial Let's Talk Footer */}
-      <Footer onOpenContact={() => handleOpenContact('General Inquiry')} />
+      <Footer onOpenContact={() => handleOpenContact('Internship & Project Opportunity')} />
 
       {/* Modals & Overlays */}
       <ProjectModal

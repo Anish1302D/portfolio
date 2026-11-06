@@ -210,10 +210,10 @@ export default function About({ onOpenContact }) {
                   {/* Top Perimeter */}
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-white/10 pb-3">
                     <h3 className="text-xs sm:text-sm md:text-base font-extrabold uppercase tracking-tight text-white max-w-xl">
-                      TURNING VISIONARY IDEAS INTO FAST, SCALABLE INTELLIGENT SYSTEMS
+                      COMPUTER SCIENCE STUDENT &bull; FULL-STACK &bull; APPLIED AI DEVELOPER
                     </h3>
                     <span className="text-[10px] font-mono tracking-wider uppercase text-neutral-400 shrink-0">
-                      BASED IN PUNE, INDIA &bull; SPPU &bull; SPHERE FOUNDER
+                      PUNE, INDIA &bull; S.P. COLLEGE, SPPU &bull; SPHERE COMMUNITY
                     </span>
                   </div>
 
@@ -227,11 +227,11 @@ export default function About({ onOpenContact }) {
                         <span className="text-[10px] font-bold tracking-widest uppercase text-neutral-300">DISCIPLINE &amp; CRAFT</span>
                         <div className="h-px bg-white/15 w-6" />
                         <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-400">
-                          FULL STACK &bull; AI/ML &bull; CESIUMJS 3D &bull; WEBRTC &bull; SYSTEMS
+                          REACT &bull; FASTAPI &bull; PYTORCH &bull; YOLOV8 &bull; POSTGRESQL &bull; GSAP
                         </span>
                       </div>
                       <p className="text-xs sm:text-[12px] font-medium leading-relaxed tracking-wider uppercase text-neutral-300">
-                        I AM ANISH MOGAM, A COMPUTER SCIENCE STUDENT AT SAVITRIBAI PHULE PUNE UNIVERSITY AND FOUNDER OF SPHERE CLUB. I SPECIALIZE IN BUILDING BESPOKE DIGITAL PRODUCTS WHERE PURPOSEFUL EDITORIAL DESIGN MEETS MISSION-CRITICAL ENGINEERING AND MEASURABLE IMPACT.
+                        I am a Computer Science student at S.P. College, Pune (affiliated with SPPU) and founder of Sphere Community. I focus on hands-on full-stack development and applied machine learning, engineering functional systems from workflow automation to computer vision. I enjoy building software that solves concrete problems, organizing collaborative sessions with peers, and I am actively seeking software development internships and collaborative opportunities.
                       </p>
                     </div>
 
@@ -247,10 +247,10 @@ export default function About({ onOpenContact }) {
                         </svg>
                       </button>
                       <a
-                        href="#services"
+                        href="#projects"
                         className="pointer-events-auto px-5 py-2.5 rounded-full border border-neutral-500 hover:border-white text-white text-xs font-bold tracking-wider uppercase transition-all duration-200 inline-block text-center"
                       >
-                        SERVICES
+                        PROJECTS
                       </a>
                     </div>
                   </div>

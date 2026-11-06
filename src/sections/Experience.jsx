@@ -72,11 +72,11 @@ export default function Experience() {
       // Update Phase HUD text
       if (hudPhaseRef.current) {
         if (currentProgress < 0.28) {
-          hudPhaseRef.current.textContent = 'FOUNDATION & ACADEMIC EXPEDITION';
+          hudPhaseRef.current.textContent = 'ACADEMIC FOUNDATION &bull; S.P. COLLEGE';
         } else if (currentProgress < 0.65) {
-          hudPhaseRef.current.textContent = 'SPPU CS & AI/ML RESEARCH';
+          hudPhaseRef.current.textContent = 'B.SC. COMPUTER SCIENCE &bull; SPPU';
         } else {
-          hudPhaseRef.current.textContent = 'SPHERE CLUB FOUNDER & PRODUCTION SYSTEMS';
+          hudPhaseRef.current.textContent = 'COMMUNITY LEADERSHIP &bull; SPHERE COMMUNITY';
         }
       }
 
@@ -118,8 +118,8 @@ export default function Experience() {
     <section
       ref={sectionRef}
       className="relative w-full bg-[#070709] text-white overflow-visible"
-      data-purpose="experience-section"
-      id="experience"
+      data-purpose="background-section"
+      id="background"
       style={{ height: '280vh' }}
     >
       {/* Sticky 100vh Theater / Viewport Window */}
@@ -127,7 +127,7 @@ export default function Experience() {
         id="exp-sticky-viewport"
         className="sticky top-0 w-full h-[100dvh] overflow-hidden bg-[#070709] flex flex-col justify-between select-none"
       >
-        {/* Layer 0: Background Cinematic Ambience & Atmospheric Grid */}
+        {/* Layer 0: Background Ambient Atmospheric Grid */}
         <div className="absolute inset-0 pointer-events-none opacity-20">
           <div
             className="absolute inset-0"
@@ -138,19 +138,19 @@ export default function Experience() {
           />
         </div>
 
-        {/* Layer 0B: Massive Ambient Horizontal Running Tickers */}
+        {/* Layer 0B: Ambient Horizontal Running Tickers */}
         <div className="absolute inset-0 flex flex-col justify-around pointer-events-none overflow-hidden opacity-[0.035]">
           <div
             ref={tickerTopRef}
             className="whitespace-nowrap font-black uppercase text-[14vw] tracking-tighter will-change-transform leading-none"
           >
-            FULL STACK ARCHITECTURE &nbsp;&nbsp; AI TELEMETRY &nbsp;&nbsp; FULL STACK ARCHITECTURE &nbsp;&nbsp; AI TELEMETRY &nbsp;&nbsp;
+            B.SC. COMPUTER SCIENCE &nbsp;&nbsp; FULL-STACK &nbsp;&nbsp; APPLIED AI &nbsp;&nbsp; SPHERE COMMUNITY &nbsp;&nbsp;
           </div>
           <div
             ref={tickerBottomRef}
             className="whitespace-nowrap font-black uppercase text-[14vw] tracking-tighter will-change-transform leading-none"
           >
-            2024 &nbsp;&nbsp; SPPU CS & AI &nbsp;&nbsp; 2026 &nbsp;&nbsp; SPHERE FOUNDER &nbsp;&nbsp; 2024 &nbsp;&nbsp; SPPU CS & AI &nbsp;&nbsp;
+            S.P. COLLEGE PUNE &nbsp;&nbsp; SPPU &nbsp;&nbsp; SPHERE COMMUNITY FOUNDER &nbsp;&nbsp; S.P. COLLEGE PUNE &nbsp;&nbsp;
           </div>
         </div>
 
@@ -161,7 +161,7 @@ export default function Experience() {
               ref={hudPhaseRef}
               className="text-[11px] font-semibold tracking-widest uppercase text-neutral-400 font-mono"
             >
-              FOUNDATION & ACADEMIC EXPEDITION
+              ACADEMIC FOUNDATION &bull; S.P. COLLEGE
             </span>
           </div>
 
@@ -185,18 +185,18 @@ export default function Experience() {
             <div className="exp-panel flex-shrink-0 w-[95vw] md:w-[85vw] px-8 md:px-16 lg:px-24 flex flex-col justify-center">
               <div className="max-w-3xl">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/[0.04] text-[10px] font-semibold tracking-widest uppercase text-neutral-300 mb-6">
-                  <span>FOUNDATION & JOURNEY</span>
+                  <span>ACADEMIC &amp; LEADERSHIP JOURNEY</span>
                 </div>
                 <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tight text-white leading-[0.88] mb-8">
-                  WHERE<br />I'VE BEEN
+                  MY<br />BACKGROUND
                 </h2>
                 <p className="text-base sm:text-lg md:text-xl text-neutral-300 leading-relaxed max-w-xl font-normal">
-                  My journey through computer science at Savitribai Phule Pune University, engineering intelligent AI systems, and leading developer communities.
+                  Computer Science education at S.P. College, Pune (affiliated with SPPU) and community leadership founding Sphere Community.
                 </p>
               </div>
             </div>
 
-            {/* ================= CHAPTER 01: ACADEMICS & AI (90vw - 190vw) ================= */}
+            {/* ================= CHAPTER 01: EDUCATION (90vw - 190vw) ================= */}
             <div className="exp-panel relative flex-shrink-0 w-[105vw] md:w-[100vw] px-8 md:px-16 lg:px-24 flex flex-col justify-center">
               {/* Background Parallax Date Typography */}
               <div
@@ -214,51 +214,51 @@ export default function Experience() {
                   </span>
                   <span className="h-[1px] w-12 bg-white/20" />
                   <span className="text-xs font-bold tracking-widest uppercase text-white">
-                    SAVITRIBAI PHULE PUNE UNIVERSITY
+                    EDUCATION &bull; S.P. COLLEGE, PUNE (SPPU)
                   </span>
                 </div>
 
                 {/* Oversized Typographic Role Title */}
                 <h3 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.92] mb-6">
-                  COMPUTER SCIENCE<br />&amp; AI SYSTEMS
+                  B.SC. COMPUTER<br />SCIENCE
                 </h3>
 
                 {/* Narrative Summary */}
                 <p className="text-sm sm:text-base md:text-lg text-neutral-300 leading-relaxed max-w-2xl mb-8">
-                  Rigorous academic curriculum coupled with intensive self-directed systems engineering. Specializing in machine learning telemetry, WebRTC protocols, and distributed architecture.
+                  Pursuing Bachelor of Science in Computer Science at Sir Parashurambhau (S.P.) College, Pune, affiliated with Savitribai Phule Pune University. Focusing on computational theory, algorithmic problem solving, data structures, and hands-on software development.
                 </p>
 
-                {/* Milestone Specifications (Hairline Grid) */}
+                {/* Specifications Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/10 max-w-3xl mb-8">
                   <div>
                     <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
-                      FOUNDATION
+                      CURRICULUM
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
-                      Completed 1000+ hours of full-stack development &amp; algorithmic problem solving
+                      Data Structures, Algorithms, DBMS, OOP, Computer Networks, and OS.
                     </div>
                   </div>
                   <div>
                     <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
-                      COMPETITION
+                      APPLIED STACK
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
-                      Engineered InfraGuard AI for AMD Slingshot 2025 anomaly detection
+                      Building projects using Python, React, FastAPI, Node.js, and SQL.
                     </div>
                   </div>
                   <div>
                     <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
-                      RESEARCH
+                      COMPETITIONS
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
-                      Built KesslerX orbital simulator &amp; HeyLo peer-to-peer audio protocol
+                      Participant in AMD Slingshot 2025 developing InfraGuard AI.
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* ================= CHAPTER 02: SPHERE CLUB & LEADERSHIP (190vw - 290vw) ================= */}
+            {/* ================= CHAPTER 02: COMMUNITY LEADERSHIP (190vw - 290vw) ================= */}
             <div className="exp-panel relative flex-shrink-0 w-[105vw] md:w-[100vw] px-8 md:px-16 lg:px-24 flex flex-col justify-center">
               {/* Background Parallax Date Typography */}
               <div
@@ -276,7 +276,7 @@ export default function Experience() {
                   </span>
                   <span className="h-[1px] w-12 bg-white/20" />
                   <span className="text-xs font-bold tracking-widest uppercase text-white">
-                    COMMUNITY LEADERSHIP &amp; ENGINEERING
+                    COMMUNITY LEADERSHIP
                   </span>
                   <span className="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full border border-white/20 text-[10px] font-semibold uppercase text-neutral-300">
                     ACTIVE
@@ -285,38 +285,38 @@ export default function Experience() {
 
                 {/* Oversized Typographic Role Title */}
                 <h3 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight text-white leading-[0.92] mb-6">
-                  FOUNDER,<br />SPHERE CLUB
+                  FOUNDER,<br />SPHERE COMMUNITY
                 </h3>
 
                 {/* Narrative Summary */}
                 <p className="text-sm sm:text-base md:text-lg text-neutral-300 leading-relaxed max-w-2xl mb-8">
-                  Founded Sphere Club (sphere-club.vercel.app) to cultivate engineering excellence, collaborative hackathon teams, and modern software craftsmanship.
+                  Founded Sphere Community (sphere-club.vercel.app) to bring student developers and tech peers together in Pune for collaborative project development, peer learning, and shared technical growth.
                 </p>
 
-                {/* Milestone Specifications (Hairline Grid) */}
+                {/* Specifications Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 border-t border-white/10 max-w-3xl mb-8">
                   <div>
                     <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
-                      LEADERSHIP
+                      COORDINATION
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
-                      Organized engineering hackathons, design sprints, and open-source bootcamps
+                      Organized recruitment, onboarding, and structured project study groups.
                     </div>
                   </div>
                   <div>
                     <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
-                      ARCHITECTURE
+                      COLLABORATION
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
-                      Architected full-stack web platforms with Next.js, Node.js, and cloud backends
+                      Conducted peer code reviews, collaborative sprints, and developer workshops.
                     </div>
                   </div>
                   <div>
                     <div className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest mb-1.5 font-mono">
-                      IMPACT
+                      PROJECT BUILDS
                     </div>
                     <div className="text-xs sm:text-sm text-neutral-200 font-medium leading-snug">
-                      Shipped 15+ production repositories across university &amp; client initiatives
+                      Supported student peers in building functional web apps and hackathon projects.
                     </div>
                   </div>
                 </div>
@@ -334,14 +334,14 @@ export default function Experience() {
               onClick={() => jumpToProgress(0.35)}
               className="text-[11px] font-bold tracking-widest uppercase px-3 py-1 rounded-md border border-white/20 text-white bg-white/10 transition-all hover:bg-white/20 cursor-pointer"
             >
-              ACADEMICS &amp; AI
+              EDUCATION
             </button>
             <button
               type="button"
               onClick={() => jumpToProgress(0.75)}
               className="text-[11px] font-bold tracking-widest uppercase px-3 py-1 rounded-md border border-white/10 text-neutral-400 hover:text-white transition-all hover:border-white/30 cursor-pointer"
             >
-              SPHERE CLUB
+              SPHERE COMMUNITY
             </button>
           </div>
         </footer>
@@ -349,4 +349,3 @@ export default function Experience() {
     </section>
   );
 }
-

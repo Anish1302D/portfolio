@@ -6,67 +6,67 @@ export const ANISH_PROJECTS = [
     src: '/project-images/project-infraguard.png',
     alt: 'InfraGuard AI',
     title: 'InfraGuard AI',
-    subtitle: 'AMD Slingshot 2025 — Telemetry & Anomaly Detection',
-    description: 'Automated infrastructure anomaly detection and autonomous remediation pipeline using machine learning telemetry and edge deployment for distributed cloud servers.',
+    subtitle: 'Infrastructure Monitoring & Machine Learning Telemetry',
+    description: 'An infrastructure failure prediction system built for AMD Slingshot 2025. Combines computer vision for road surface defect classification with predictive machine learning models and SHAP explainability.',
+    link: 'https://infraguard-ai-ltxb.onrender.com',
+    tools: ['Python', 'FastAPI', 'YOLOv8', 'PyTorch', 'ResNet', 'XGBoost', 'SHAP', 'React', 'Docker'],
+    deliverables: ['Computer Vision Defect Detection', 'Predictive Failure Analysis', 'Explainable AI Dashboard (SHAP)'],
+    stats: 'Multimodal prototype developed for AMD Slingshot 2025 competition.'
+  },
+  {
+    src: '/project-images/project-smarttrek.png',
+    alt: 'SP College Approval Hub',
+    title: 'SP College Approval Hub',
+    subtitle: 'Institutional Workflow & Procurement Management (ProcureFlow)',
+    description: 'A structured workflow management system for institutional requests and department approvals. Features multi-tier approval routing, role-based access control (RBAC), document security, and request versioning.',
     link: 'https://github.com/Anish1302D',
-    tools: ['Python', 'FastAPI', 'PyTorch', 'React', 'Docker'],
-    deliverables: ['Autonomous Remediation Engine', 'Telemetry Stream Pipeline', 'Edge Optimization Engine'],
-    stats: 'Processes multi-node infrastructure telemetry with 99.4% anomaly precision.'
+    tools: ['React', 'Node.js', 'Express', 'PostgreSQL', 'Tailwind CSS'],
+    deliverables: ['Role-Based Access Control (RBAC)', 'Multi-Tier Approval Stages', 'Document Security & Audit Logging'],
+    stats: 'Workflow automation system for institutional and academic request approval.'
   },
   {
     src: '/project-images/project-kesslerx.png',
     alt: 'KesslerX',
     title: 'KesslerX',
-    subtitle: 'Live Orbital Tracking & 3D Collision Avoidance',
-    description: 'Live orbital traffic management, real-time collision prediction, and satellite tracking built with CesiumJS 3D and orbital mechanics algorithms.',
-    link: 'https://github.com/Anish1302D',
-    tools: ['CesiumJS', 'Three.js', 'React', 'TypeScript', 'Web Workers'],
-    deliverables: ['3D Ephemeris Satellite Visualizer', 'Proximity Hazard Alert Matrix', 'Orbital Trajectory Calculator'],
-    stats: 'Tracks 25,000+ orbital objects in real-time with sub-second collision forecast.'
+    subtitle: 'Space Situational Awareness & Orbital Visualization',
+    description: 'An orbital situational awareness interface exploring satellite ephemeris, orbital trajectory visualization, and collision-risk concepts built with CesiumJS 3D and Space-Track public telemetry.',
+    link: 'https://kessler-x.vercel.app',
+    tools: ['React', 'TypeScript', 'CesiumJS', 'FastAPI', 'Tailwind CSS'],
+    deliverables: ['3D CesiumJS Orbital Globe', 'Space-Track API Integration', 'Orbital Conjunction Risk Visualizer'],
+    stats: 'Interactive 3D visualization of satellites and orbital debris paths.'
   },
   {
     src: '/project-images/project-heylo.png',
-    alt: 'HeyLo App',
-    title: 'HeyLo App',
-    subtitle: 'Decentralized WebRTC Communication Engine',
-    description: 'Decentralized WebRTC peer-to-peer voice and real-time chat application with sub-50ms latency and end-to-end encryption.',
+    alt: "God's Eye View",
+    title: "God's Eye View",
+    subtitle: 'Geospatial Visualization & Virtual Globe',
+    description: 'A geospatial exploration and mapping tool featuring interactive 3D globe visualization with public data layers and spatial coordinates using CesiumJS and modern web APIs.',
     link: 'https://github.com/Anish1302D',
-    tools: ['WebRTC', 'Socket.io', 'Node.js', 'React', 'Tailwind'],
-    deliverables: ['P2P Audio/Video Mesh', 'E2E Encrypted Signaling', 'Zero-Latency Presence Protocol'],
-    stats: 'Sub-50ms glass-to-glass latency with zero intermediary media storage.'
-  },
-  {
-    src: '/project-images/project-smarttrek.png',
-    alt: 'Smart Trek Companion',
-    title: 'Smart Trek Companion',
-    subtitle: 'Offline Wilderness Navigation & YOLOv8 Hazard Detection',
-    description: 'Offline-first Progressive Web App for wilderness navigation featuring Mapbox GL vector tiles, emergency beaconing, and YOLOv8 hazard identification.',
-    link: 'https://github.com/Anish1302D',
-    tools: ['PWA', 'Mapbox GL', 'YOLOv8', 'TensorFlow.js', 'IndexedDB'],
-    deliverables: ['Offline Vector Map Tiles', 'Edge Hazard Detection (YOLOv8)', 'Emergency SOS Beacon'],
-    stats: '100% offline functionality in remote terrain with 45ms computer vision inferencing.'
+    tools: ['CesiumJS', 'JavaScript', 'HTML5', 'CSS3', 'Web APIs'],
+    deliverables: ['Interactive 3D Geospatial Globe', 'Public Data Layer Integration', 'Coordinate Controls & Camera Navigation'],
+    stats: 'Geospatial web application exploring 3D coordinate mapping.'
   },
   {
     src: '/project-images/project-sphere.png',
-    alt: 'Sphere Club Portal',
-    title: 'Sphere Club Portal',
-    subtitle: 'Developer Community & Project Incubator',
-    description: 'Official digital headquarters for the Sphere tech community (sphere-club.vercel.app). Facilitates collaborative sprints, project showcases, and student developer mentorship.',
+    alt: 'Sphere Community',
+    title: 'Sphere Community Platform',
+    subtitle: 'Student Developer Community Hub & Showcase',
+    description: 'Digital platform for Sphere Community, a peer-led student developer community in Pune founded by Anish Mogam. Facilitates student collaboration, peer code sessions, and project showcases.',
     link: 'https://sphere-club.vercel.app',
-    tools: ['Next.js', 'Tailwind CSS', 'Vercel', 'Supabase'],
-    deliverables: ['Community Showcase System', 'Member Onboarding Portal', 'Project Sprints Hub'],
-    stats: 'Engages active students and developers across Pune University.'
+    tools: ['React', 'Tailwind CSS', 'Vercel', 'JavaScript'],
+    deliverables: ['Community Directory & Onboarding', 'Project Collaboration Showcase', 'Resource Sharing Repository'],
+    stats: 'Founder-led community connecting student developers across Pune.'
   },
   {
     src: '/project-images/project-atelier.png',
-    alt: 'Atelier Portfolio Systems',
-    title: 'Atelier Portfolio Systems',
-    subtitle: 'Editorial Monochrome Architecture & Shaders',
-    description: 'A high-performance portfolio crafted with modern typography, fluid interactions, WebGL shader bends, and curated engineering craft.',
+    alt: 'Personal Portfolio',
+    title: 'Personal Portfolio',
+    subtitle: 'React, Vite & GSAP Architecture',
+    description: 'Modern component-based developer portfolio built from scratch with React, Vite, and GSAP. Features custom animation timelines, horizontal spatial canvas, and WebGL liquid shader integration.',
     link: 'https://github.com/Anish1302D/portfolio',
-    tools: ['React', 'Vite', 'GSAP', 'OGL', 'Tailwind'],
-    deliverables: ['Editorial Design Architecture', 'WebGL Shader Bends', 'Fluid Scroll Kinetic Canvas'],
-    stats: '100 Lighthouse performance score with 60/120 FPS hardware acceleration.'
+    tools: ['React', 'Vite', 'GSAP', 'Tailwind CSS', 'OGL / WebGL'],
+    deliverables: ['Custom GSAP Scroll Timelines', 'Hardware-Accelerated WebGL Shaders', 'Clean Modular Component Architecture'],
+    stats: 'Lightweight, responsive personal portfolio build.'
   }
 ];
 
@@ -81,14 +81,14 @@ export default function FeaturedProjects({ onSelectProject }) {
       <div className="mb-8 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <span className="text-[10px] font-mono tracking-widest uppercase text-neutral-400 block mb-1">
-            SELECTED WORKS &bull; 2024–2026
+            FEATURED BUILDS &bull; SELECTED PROJECTS
           </span>
           <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-neutral-900">
-            FEATURED PROJECT
+            FEATURED PROJECTS
           </h2>
         </div>
         <p className="text-xs font-mono uppercase text-neutral-500 tracking-wider">
-          DRAG OR CLICK CARD TO EXPLORE DETAILS
+          CLICK CARD OR DRAG CAROUSEL TO VIEW DETAILS
         </p>
       </div>
 

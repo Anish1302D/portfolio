@@ -20,84 +20,68 @@
       width: 210mm;
       min-height: 297mm;
       margin: 0 auto;
-      padding: 28mm 24mm 20mm;
+      padding: 24mm 22mm 18mm;
       background: #fff;
     }
 
     /* ===== HEADER ===== */
-    .r-header { margin-bottom: 18px; border-bottom: 2px solid #0ea5e9; padding-bottom: 14px; }
+    .r-header { margin-bottom: 16px; border-bottom: 2px solid #0f172a; padding-bottom: 12px; }
     .r-name { font-size: 26px; font-weight: 700; color: #0f172a; letter-spacing: 0.02em; }
-    .r-title { font-size: 13px; font-weight: 500; color: #0ea5e9; margin-top: 2px; letter-spacing: 0.03em; }
+    .r-title { font-size: 13px; font-weight: 600; color: #334155; margin-top: 2px; letter-spacing: 0.02em; }
     .r-contact-row {
-      display: flex; flex-wrap: wrap; gap: 6px 18px;
+      display: flex; flex-wrap: wrap; gap: 6px 16px;
       margin-top: 8px; font-size: 11px; color: #475569;
     }
-    .r-contact-row a { color: #0ea5e9; text-decoration: none; }
+    .r-contact-row a { color: #0f172a; text-decoration: none; font-weight: 500; }
     .r-contact-row a:hover { text-decoration: underline; }
     .r-divider { display: inline; }
     .r-divider::before { content: '•'; margin: 0 2px; color: #94a3b8; }
 
     /* ===== SECTIONS ===== */
-    .r-section { margin-bottom: 16px; }
+    .r-section { margin-bottom: 14px; }
     .r-section-title {
       font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
-      text-transform: uppercase; color: #0ea5e9;
+      text-transform: uppercase; color: #0f172a;
       border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 4px; margin-bottom: 10px;
+      padding-bottom: 3px; margin-bottom: 8px;
     }
 
     /* ===== SUMMARY ===== */
-    .r-summary { font-size: 11.5px; color: #334155; line-height: 1.65; }
+    .r-summary { font-size: 11px; color: #334155; line-height: 1.6; }
 
-    /* ===== EDUCATION ===== */
+    /* ===== EDUCATION & LEADERSHIP ===== */
     .r-edu-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
-    .r-edu-name { font-size: 12.5px; font-weight: 600; color: #0f172a; }
-    .r-edu-sub { font-size: 11px; color: #64748b; margin-top: 1px; }
+    .r-edu-name { font-size: 12px; font-weight: 600; color: #0f172a; }
+    .r-edu-sub { font-size: 11px; color: #475569; margin-top: 1px; }
     .r-edu-year { font-size: 11px; color: #64748b; white-space: nowrap; font-weight: 500; }
+    .r-edu-bullets { margin-top: 3px; padding-left: 16px; }
+    .r-edu-bullets li { font-size: 11px; color: #334155; margin-bottom: 2px; line-height: 1.5; }
 
     /* ===== SKILLS ===== */
-    .r-skills-grid { display: grid; grid-template-columns: 120px 1fr; gap: 5px 12px; font-size: 11.5px; }
+    .r-skills-grid { display: grid; grid-template-columns: 130px 1fr; gap: 4px 12px; font-size: 11px; }
     .r-skill-cat { font-weight: 600; color: #0f172a; }
     .r-skill-list { color: #334155; }
 
     /* ===== PROJECTS ===== */
-    .r-project { margin-bottom: 12px; }
+    .r-project { margin-bottom: 11px; }
     .r-project-header { display: flex; justify-content: space-between; align-items: baseline; }
-    .r-project-name { font-size: 12.5px; font-weight: 600; color: #0f172a; }
+    .r-project-name { font-size: 12px; font-weight: 600; color: #0f172a; }
     .r-project-tag {
-      font-size: 9.5px; font-weight: 600; color: #0ea5e9;
-      background: #f0f9ff; padding: 1px 6px; border-radius: 3px;
+      font-size: 9.5px; font-weight: 600; color: #334155;
+      background: #f1f5f9; padding: 1px 6px; border-radius: 3px;
       letter-spacing: 0.03em;
     }
-    .r-project-tech { font-size: 10px; color: #64748b; margin-top: 2px; font-style: italic; }
-    .r-project-bullets { margin-top: 4px; padding-left: 16px; }
-    .r-project-bullets li { font-size: 11px; color: #334155; margin-bottom: 2px; line-height: 1.55; }
-
-    /* ===== ACHIEVEMENTS ===== */
-    .r-achievement { display: flex; gap: 8px; margin-bottom: 6px; font-size: 11.5px; }
-    .r-achievement-bullet { color: #0ea5e9; font-weight: 700; flex-shrink: 0; }
-    .r-achievement-text { color: #334155; }
-    .r-achievement-text strong { color: #0f172a; }
-
-    /* ===== CERTIFICATIONS ===== */
-    .r-cert { font-size: 11.5px; color: #334155; margin-bottom: 4px; }
-    .r-cert strong { color: #0f172a; }
-
-    /* ===== LINKS ROW ===== */
-    .r-links-row { display: flex; gap: 18px; margin-top: 2px; }
-    .r-links-row a {
-      font-size: 10.5px; color: #0ea5e9; text-decoration: none;
-      border-bottom: 1px dotted #0ea5e9; padding-bottom: 0;
-    }
+    .r-project-tech { font-size: 10px; color: #64748b; margin-top: 1px; font-style: italic; }
+    .r-project-bullets { margin-top: 3px; padding-left: 16px; }
+    .r-project-bullets li { font-size: 11px; color: #334155; margin-bottom: 2px; line-height: 1.5; }
 
     /* ===== PRINT ===== */
     @media print {
       body { background: #fff; }
-      .resume-page { padding: 20mm 22mm 18mm; box-shadow: none; }
+      .resume-page { padding: 18mm 20mm 16mm; box-shadow: none; }
       .no-print { display: none !important; }
     }
 
-    /* ===== SCREEN ONLY EXTRAS ===== */
     @media screen {
       body { background: #f1f5f9; padding: 20px 0; }
       .resume-page { box-shadow: 0 4px 30px rgba(0,0,0,0.12); border-radius: 4px; }
@@ -110,25 +94,25 @@
   <!-- HEADER -->
   <div class="r-header">
     <div class="r-name">ANISH MOGAM</div>
-    <div class="r-title">Computer Science Student | Full Stack Developer | AI Enthusiast</div>
+    <div class="r-title">Computer Science Student &bull; Full-Stack Developer &bull; Applied AI Developer</div>
     <div class="r-contact-row">
       <span><a href="mailto:anishmogam@gmail.com">anishmogam@gmail.com</a></span>
       <span class="r-divider"></span>
       <span>+91 86051 04120</span>
       <span class="r-divider"></span>
-      <span>Pune, Maharashtra</span>
+      <span>Pune, Maharashtra, India</span>
       <span class="r-divider"></span>
-      <span><a href="https://www.linkedin.com/in/anish-mogam-33a2b6218/" target="_blank">LinkedIn</a></span>
+      <span><a href="https://www.linkedin.com/in/anish-mogam/" target="_blank" rel="noopener">linkedin.com/in/anish-mogam</a></span>
       <span class="r-divider"></span>
-      <span><a href="https://github.com/Anish1302D" target="_blank">GitHub</a></span>
+      <span><a href="https://github.com/Anish1302D" target="_blank" rel="noopener">github.com/Anish1302D</a></span>
     </div>
   </div>
 
   <!-- SUMMARY -->
   <div class="r-section">
-    <div class="r-section-title">Professional Summary</div>
+    <div class="r-section-title">Profile</div>
     <div class="r-summary">
-      Results-driven Computer Science student at Savitribai Phule Pune University (SPPU) with hands-on experience in full-stack development, AI/ML systems, and cloud-native applications. Passionate about building intelligent, scalable, and production-grade software. Active hackathon participant with experience in competitive development environments including AMD Slingshot. Seeking internship opportunities to apply technical skills in real-world engineering challenges.
+      Computer Science student at S.P. College, Pune (affiliated with Savitribai Phule Pune University) and Founder of Sphere Community. Experienced in full-stack web development, applied machine learning systems, and workflow automation. Focused on building practical software from modular frontend components to computer vision pipelines. Open to software development internships, research initiatives, and technical collaborations.
     </div>
   </div>
 
@@ -137,31 +121,49 @@
     <div class="r-section-title">Education</div>
     <div class="r-edu-row">
       <div>
-        <div class="r-edu-name">Bachelor of Science in Computer Science</div>
-        <div class="r-edu-sub">Savitribai Phule Pune University (SPPU), Pune</div>
+        <div class="r-edu-name">Bachelor of Science in Computer Science (B.Sc. Computer Science)</div>
+        <div class="r-edu-sub">Sir Parashurambhau (S.P.) College, Pune &bull; Affiliated with Savitribai Phule Pune University (SPPU)</div>
       </div>
       <div class="r-edu-year">2024 – Present</div>
     </div>
+    <ul class="r-edu-bullets">
+      <li>Core coursework: Data Structures, Algorithms, Object-Oriented Programming, Database Management Systems, Computer Networks, and Operating Systems.</li>
+    </ul>
+  </div>
+
+  <!-- COMMUNITY LEADERSHIP -->
+  <div class="r-section">
+    <div class="r-section-title">Community Leadership</div>
+    <div class="r-edu-row">
+      <div>
+        <div class="r-edu-name">Founder &bull; Sphere Community</div>
+        <div class="r-edu-sub">Peer-led student developer community based in Pune, India</div>
+      </div>
+      <div class="r-edu-year">2024 – Present</div>
+    </div>
+    <ul class="r-edu-bullets">
+      <li>Founded and lead Sphere Community (sphere-club.vercel.app), organizing collaborative technical discussions, code sessions, and project sprints for student developers.</li>
+      <li>Coordinated peer onboarding, project brainstorms, and resource-sharing for web engineering and applied AI initiatives.</li>
+      <li>Cultivated collaborative team environments helping student peers build and showcase functional software projects.</li>
+    </ul>
   </div>
 
   <!-- TECHNICAL SKILLS -->
   <div class="r-section">
-    <div class="r-section-title">Technical Skills</div>
+    <div class="r-section-title">Technical Capabilities</div>
     <div class="r-skills-grid">
       <span class="r-skill-cat">Languages</span>
-      <span class="r-skill-list">JavaScript, TypeScript, Python, HTML5, CSS3, SQL</span>
+      <span class="r-skill-list">Python, JavaScript, TypeScript, Java, SQL</span>
       <span class="r-skill-cat">Frontend</span>
-      <span class="r-skill-list">React.js, Next.js, Tailwind CSS, Framer Motion, shadcn/ui</span>
+      <span class="r-skill-list">React, Vite, HTML5, CSS3, Tailwind CSS</span>
       <span class="r-skill-cat">Backend</span>
-      <span class="r-skill-list">Node.js, Express.js, Flask, FastAPI, REST APIs, JWT Auth</span>
+      <span class="r-skill-list">FastAPI, Node.js, Express, REST APIs, WebSockets</span>
       <span class="r-skill-cat">AI / ML</span>
-      <span class="r-skill-list">TensorFlow, ResNet CNN, XGBoost, SHAP / XAI, OpenCV, LangChain, Hugging Face, YOLOv8</span>
-      <span class="r-skill-cat">Databases</span>
-      <span class="r-skill-list">MongoDB, PostgreSQL (PostGIS), MySQL, Firebase Firestore, Redis</span>
-      <span class="r-skill-cat">Cloud / DevOps</span>
-      <span class="r-skill-list">Firebase, Vercel, Docker, GitHub Actions, Google Cloud, AWS (basics)</span>
-      <span class="r-skill-cat">Tools</span>
-      <span class="r-skill-list">Git, GitHub, Figma, Postman, VS Code, Linux, Jupyter Notebook</span>
+      <span class="r-skill-list">PyTorch, YOLOv8, OpenCV, CNNs, XGBoost, SHAP</span>
+      <span class="r-skill-cat">Infrastructure</span>
+      <span class="r-skill-list">PostgreSQL, MongoDB, Redis, Docker, Git, GitHub, Linux</span>
+      <span class="r-skill-cat">Interactive / 3D</span>
+      <span class="r-skill-list">GSAP, Three.js, CesiumJS</span>
     </div>
   </div>
 
@@ -171,86 +173,69 @@
 
     <div class="r-project">
       <div class="r-project-header">
-        <div class="r-project-name">InfraGuard AI — Infrastructure Failure Prediction System</div>
-        <div class="r-project-tag">AMD Slingshot</div>
+        <div class="r-project-name">InfraGuard AI — Infrastructure Monitoring &amp; Predictive Failure System</div>
+        <div class="r-project-tag">AMD Slingshot 2025</div>
       </div>
-      <div class="r-project-tech">Python, ResNet CNN, XGBoost, SHAP, React, FastAPI, OpenCV</div>
+      <div class="r-project-tech">Python, FastAPI, YOLOv8, PyTorch, ResNet, XGBoost, SHAP, React, Docker</div>
       <ul class="r-project-bullets">
-        <li>Developed a multimodal failure prediction system combining satellite imagery, traffic data, AQI, weather, and flood history for proactive infrastructure monitoring.</li>
-        <li>Implemented ResNet CNN + XGBoost ensemble model achieving high accuracy in road condition classification across 4 cities globally.</li>
-        <li>Built a real-time monitoring dashboard with explainable AI via SHAP and an automated critical alert system.</li>
-        <li>Deployed at <strong>infraguard-ai-ltxb.onrender.com</strong> with a FastAPI backend and React frontend.</li>
+        <li>Engineered an infrastructure monitoring prototype combining computer vision for defect detection with predictive machine learning models.</li>
+        <li>Implemented ResNet CNN and XGBoost ensemble pipelines with SHAP explainable AI for transparent reasoning behind hazard alerts.</li>
+        <li>Designed a responsive React monitoring dashboard with real-time alerting for proactive infrastructure maintenance.</li>
       </ul>
     </div>
 
     <div class="r-project">
       <div class="r-project-header">
-        <div class="r-project-name">KesslerX — Space Situational Awareness Platform</div>
-        <div class="r-project-tag">Live Project</div>
+        <div class="r-project-name">SP College Approval Hub (ProcureFlow) — Institutional Workflow Management</div>
+        <div class="r-project-tag">Workflow Platform</div>
       </div>
-      <div class="r-project-tech">React, TypeScript, CesiumJS, Tailwind, FastAPI, Space-Track API, WebSockets</div>
+      <div class="r-project-tech">React, Node.js, Express, PostgreSQL, Tailwind CSS</div>
       <ul class="r-project-bullets">
-        <li>Developed an AI-powered Orbital Traffic Management dashboard featuring a 3D CesiumJS globe tracking live satellites and orbital debris.</li>
-        <li>Integrated FastAPI backend with the official Space-Track API, implementing resilience layers including local caching and rate limiting.</li>
-        <li>Deployed at <strong>kessler-x.vercel.app</strong> with real-time WebSocket conjunction alert notifications.</li>
+        <li>Developed a structured workflow management system to digitize and manage institutional requests, faculty approvals, and document tracking.</li>
+        <li>Designed role-based access control (RBAC), multi-stage approval routing, request versioning, and document audit trails.</li>
       </ul>
     </div>
 
     <div class="r-project">
       <div class="r-project-header">
-        <div class="r-project-name">HeyLo App — Real-Time Chat & Productivity Platform</div>
-        <div class="r-project-tag">Full Stack</div>
+        <div class="r-project-name">KesslerX — Space Situational Awareness &amp; Orbital Visualization</div>
+        <div class="r-project-tag">Orbital Visualizer</div>
       </div>
-      <div class="r-project-tech">React, Vite, Socket.io, PeerJS (WebRTC), Node.js, Express, MongoDB</div>
+      <div class="r-project-tech">React, TypeScript, CesiumJS, FastAPI, Tailwind CSS</div>
       <ul class="r-project-bullets">
-        <li>Developed a real-time messaging application utilizing WebRTC (PeerJS) for peer-to-peer voice calling.</li>
-        <li>Implemented custom "liquid glass" UI design system with socket-driven online states, typing indicators, and read receipts.</li>
-        <li>Built a secure Node.js backend using JWT authentication, bcrypt password hashing, and MongoDB for message persistence.</li>
+        <li>Created an orbital situational awareness interface featuring an interactive 3D CesiumJS globe rendering satellite ephemeris and orbital paths.</li>
+        <li>Explored conjunction analysis concepts using public Space-Track telemetry data and proximity alerting workflows.</li>
       </ul>
     </div>
 
     <div class="r-project">
       <div class="r-project-header">
-        <div class="r-project-name">Smart Trek Companion — Offline-First PWA for Trekkers</div>
-        <div class="r-project-tag">PWA / AI</div>
+        <div class="r-project-name">God's Eye View — Geospatial Visualization System</div>
+        <div class="r-project-tag">Geospatial Tool</div>
       </div>
-      <div class="r-project-tech">React, Zustand, Mapbox GL JS, FastAPI, PostgreSQL (PostGIS), Redis, YOLOv8, RAG</div>
+      <div class="r-project-tech">CesiumJS, JavaScript, HTML5, CSS3, Web APIs</div>
       <ul class="r-project-bullets">
-        <li>Created an offline-first progressive web app providing GPS tracking, offline Mapbox navigation, and AI RAG trekking guide.</li>
-        <li>Integrated YOLOv8 for on-device wildlife detection and built a PostGIS-backed routing engine.</li>
-        <li>Designed automated emergency SOS system with device accelerometer-based fall detection.</li>
+        <li>Built an interactive 3D geospatial visualization tool incorporating public satellite and geographic data layers onto a virtual globe.</li>
+        <li>Implemented custom coordinate transformations, spatial telemetry overlays, and intuitive camera controls.</li>
       </ul>
     </div>
   </div>
 
-  <!-- ACHIEVEMENTS -->
+  <!-- PARTICIPATION & INVOLVEMENT -->
   <div class="r-section">
-    <div class="r-section-title">Achievements & Activities</div>
-    <div class="r-achievement">
-      <span class="r-achievement-bullet">▸</span>
-      <span class="r-achievement-text"><strong>AMD Slingshot Participant (2025)</strong> — Built InfraGuard AI, a multimodal infrastructure failure prediction system with real-time monitoring across 4 cities.</span>
+    <div class="r-section-title">Participation &amp; Activities</div>
+    <div class="r-edu-row">
+      <div>
+        <div class="r-edu-name">AMD Slingshot Participant (2025)</div>
+        <div class="r-edu-sub">Developed InfraGuard AI for infrastructure failure prediction and computer vision monitoring</div>
+      </div>
+      <div class="r-edu-year">2025</div>
     </div>
-    <div class="r-achievement">
-      <span class="r-achievement-bullet">▸</span>
-      <span class="r-achievement-text"><strong>5+ Hackathons</strong> — Active hackathon competitor with experience in rapid prototyping and competitive development.</span>
-    </div>
-    <div class="r-achievement">
-      <span class="r-achievement-bullet">▸</span>
-      <span class="r-achievement-text"><strong>AI/ML Specialization</strong> — Completed structured coursework in machine learning, neural networks, computer vision, and NLP through NPTEL and online programs.</span>
-    </div>
-  </div>
-
-  <!-- CERTIFICATIONS -->
-  <div class="r-section">
-    <div class="r-section-title">Certifications</div>
-    <div class="r-cert"><strong>Full Stack Web Development</strong> — Industry Certification (React, Node.js, Databases, Cloud Deployment)</div>
-    <div class="r-cert"><strong>AI/ML Specialization</strong> — NPTEL / Online Coursework</div>
   </div>
 
 </div>
 
 <script>
-// Auto-print if opened with ?print=true parameter
 if (new URLSearchParams(window.location.search).get('print') === 'true') {
   window.addEventListener('load', () => {
     setTimeout(() => window.print(), 400);

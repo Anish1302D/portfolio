@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 export default function ContactModal({ isOpen, onClose, initialService, onToast }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [service, setService] = useState('Full Stack Web Systems');
+  const [service, setService] = useState('Internship & Project Opportunity');
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -28,13 +28,13 @@ export default function ContactModal({ isOpen, onClose, initialService, onToast 
     e.preventDefault();
     onClose();
     if (onToast) {
-      onToast(`Thank you, ${name}! Your inquiry for "${service}" has been dispatched.`);
+      onToast(`Thank you, ${name}! Your message for "${service}" has been prepared.`);
     }
 
-    // Direct mailto dispatch
-    const subject = encodeURIComponent(`Project Inquiry: ${service} — ${name}`);
+    // Direct mailto dispatch to Anish Mogam
+    const subject = encodeURIComponent(`Discussion: ${service} — ${name}`);
     const body = encodeURIComponent(
-      `Hello Anish,\n\nMy name is ${name} (${email}).\n\nI am inquiring about: ${service}.\n\nDetails:\n${message}\n\nBest regards,\n${name}`
+      `Hello Anish,\n\nMy name is ${name} (${email}).\n\nTopic / Opportunity: ${service}\n\nDetails:\n${message}\n\nBest regards,\n${name}`
     );
     window.open(`mailto:anishmogam@gmail.com?subject=${subject}&body=${body}`, '_blank');
 
@@ -55,11 +55,14 @@ export default function ContactModal({ isOpen, onClose, initialService, onToast 
         <div className="flex justify-between items-center border-b border-neutral-200 pb-4 mb-6">
           <div>
             <span className="text-[10px] font-bold tracking-widest uppercase text-neutral-400 font-mono">
-              START A CONVERSATION
+              CONNECT &bull; PUNE, INDIA
             </span>
             <h3 className="text-xl font-black uppercase text-neutral-900">
-              LET'S BUILD SOMETHING
+              GET IN TOUCH
             </h3>
+            <p className="text-[11px] text-neutral-500 mt-1 font-mono">
+              Open to internships, collaborations &amp; software opportunities.
+            </p>
           </div>
           <button
             onClick={onClose}
@@ -79,7 +82,7 @@ export default function ContactModal({ isOpen, onClose, initialService, onToast 
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Alex Smith"
+              placeholder="e.g. Rahul Sharma"
               className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:border-black text-sm"
             />
           </div>
@@ -93,26 +96,26 @@ export default function ContactModal({ isOpen, onClose, initialService, onToast 
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="alex@company.com"
+              placeholder="rahul@example.com"
               className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:border-black text-sm"
             />
           </div>
 
           <div>
             <label className="block text-xs font-bold uppercase tracking-wider text-neutral-700 mb-1">
-              Service / Discussion Area
+              Topic / Opportunity Area
             </label>
             <select
               value={service}
               onChange={(e) => setService(e.target.value)}
               className="w-full px-4 py-2.5 rounded-xl border border-neutral-300 focus:outline-none focus:border-black text-sm bg-white"
             >
-              <option value="AI & Telemetry Systems">AI & Telemetry Systems</option>
-              <option value="Full Stack Web Systems">Full Stack Web Systems</option>
-              <option value="UI/UX & Architecture">UI/UX & Architecture</option>
-              <option value="High-Performance Landing Pages">High-Performance Landing Pages</option>
-              <option value="Sphere Club Collaboration">Sphere Club Collaboration</option>
-              <option value="Other Project / Hiring">Other / Hiring Inquiry</option>
+              <option value="Internship & Project Opportunity">Software Engineering Internship</option>
+              <option value="Full-Stack Web Development">Full-Stack Web Development</option>
+              <option value="Applied AI & Machine Learning">Applied AI & Machine Learning</option>
+              <option value="Sphere Community Collaboration">Sphere Community Collaboration</option>
+              <option value="Open Source & Technical Collaboration">Open Source & Technical Collaboration</option>
+              <option value="General Conversation">General Conversation</option>
             </select>
           </div>
 
@@ -125,7 +128,7 @@ export default function ContactModal({ isOpen, onClose, initialService, onToast 
               required
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Tell me about your project, engineering vision, and timeline..."
+              placeholder="Tell me about your project, team opportunity, or discussion topic..."
               className="w-full px-4 py-2 rounded-xl border border-neutral-300 focus:outline-none focus:border-black text-sm"
             />
           </div>
@@ -141,4 +144,3 @@ export default function ContactModal({ isOpen, onClose, initialService, onToast 
     </div>
   );
 }
-
