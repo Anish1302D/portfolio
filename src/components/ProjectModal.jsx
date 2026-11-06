@@ -83,11 +83,11 @@ export default function ProjectModal({ project, isOpen, onClose }) {
           )}
 
           {(project.src || project.image) && (
-            <div className={`w-full rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-100 shadow-inner flex items-center justify-center ${isCert ? 'p-2 sm:p-3 bg-neutral-50' : 'h-52 sm:h-64'}`}>
+            <div className={`w-full rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-100 shadow-inner flex items-center justify-center ${isCert ? 'p-2 sm:p-3 bg-neutral-50' : 'aspect-video bg-neutral-900/5'}`}>
               <img
                 src={project.src || project.image}
                 alt={project.alt || title}
-                className={`w-full transition-transform ${isCert ? 'max-h-[380px] object-contain rounded-xl shadow-sm' : 'h-full object-cover object-top'}`}
+                className={`w-full transition-transform ${isCert ? 'max-h-[380px] object-contain rounded-xl shadow-sm' : 'w-full h-full object-cover object-center'}`}
               />
             </div>
           )}
