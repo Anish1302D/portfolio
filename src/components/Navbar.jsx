@@ -1,52 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { scrollToSection } from '../animations/transitionAnimations';
 
-const navItems = [
-  { code: '01', name: 'SYSTEMS', id: 'projects' },
-  { code: '02', name: 'ARCHITECTURE', id: 'architecture' },
-  { code: '03', name: 'ABOUT', id: 'about' },
-  { code: '04', name: 'ARSENAL', id: 'skills' },
-  { code: '05', name: 'LOGS', id: 'achievements' },
-  { code: '06', name: 'DOSSIER', id: 'resume' },
-];
-
-export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
-  const [currentTime, setCurrentTime] = useState('');
-
-  // Live telemetry clock in IST (UTC+5:30)
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString('en-US', {
-        timeZone: 'Asia/Kolkata',
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-      });
-      setCurrentTime(`${timeStr} IST`);
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
+export default function Navbar({ onOpenContact }) {
+  const [activeSection, setActiveSection] = useState('home');
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      const sections = ['home', 'about', 'experience', 'projects', 'landing-pages', 'services'];
+      const scrollY = window.scrollY;
 
-      const sections = ['hero', 'projects', 'architecture', 'about', 'skills', 'achievements', 'resume', 'contact'];
-      const scrollPos = window.scrollY + 220;
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const sec = document.getElementById(sections[i]);
-        if (sec && sec.offsetTop <= scrollPos) {
-          setActiveSection(sections[i]);
-          break;
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 200 && rect.bottom >= 200) {
+            setActiveSection(sectionId);
+            break;
+          }
         }
       }
     };
@@ -56,253 +26,168 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e, targetId) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-    scrollToSection(targetId);
-  };
+  const navLinks = [
+    { id: 'home', label: 'HOME' },
+    { id: 'about', label: 'ABOUT ME' },
+    { id: 'experience', label: 'EXPERIENCE' },
+    { id: 'projects', label: 'PROJECTS' },
+    { id: 'landing-pages', label: 'LANDING PAGES' },
+    { id: 'services', label: 'SERVICES' },
+  ];
 
   return (
     <>
-      <header
-        id="navbar"
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1000,
-          height: 'var(--header-height)',
-          backgroundColor: isScrolled ? 'rgba(7, 8, 11, 0.92)' : 'rgba(7, 8, 11, 0.65)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: '1px solid var(--border-hairline)',
-          transition: 'background-color 0.25s ease, border-color 0.25s ease',
-          display: 'flex',
-          alignItems: 'center',
-          padding: '0 2rem',
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 'var(--container-max)',
-            margin: '0 auto',
-            width: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-          }}
+      <header className="sticky top-0 z-40 bg-[#FAFAFA]/90 backdrop-blur-md transition-all duration-300 w-full pt-5 pb-4 px-6 md:px-14 max-w-[1400px] mx-auto flex items-center justify-between">
+        {/* Brand Wordmark */}
+        <a
+          href="#home"
+          className="group font-black text-xl tracking-tight text-black flex items-center select-none"
         >
-          {/* Brand & System Identifier */}
+          <span>ANISH</span>
+          <span className="inline-block w-2 h-2 bg-black rounded-full ml-1.5 transition-transform group-hover:scale-150 duration-200"></span>
+        </a>
+
+        {/* Center Navigation Links (Editorial Floating Pill) */}
+        <nav className="hidden lg:flex items-center gap-1 p-1 bg-white/95 border border-[#E2E2E2] rounded-full shadow-sm text-xs font-semibold tracking-wider text-neutral-600">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className={`px-4 py-2 rounded-full transition whitespace-nowrap ${
+                  isActive
+                    ? 'border border-neutral-300 text-black font-bold shadow-xs'
+                    : 'border border-transparent hover:border-neutral-200 hover:text-black'
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
+        </nav>
+
+        {/* Right Social & Menu Actions */}
+        <div className="flex items-center gap-1.5 md:gap-2 p-1.5 bg-white/95 border border-[#E2E2E2] rounded-full shadow-sm">
+          {/* LinkedIn */}
           <a
-            href="#hero"
-            onClick={(e) => handleNavClick(e, 'hero')}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              fontFamily: 'var(--font-mono)',
-              textDecoration: 'none',
-            }}
-            aria-label="Anish Mogam — Origin"
+            href="https://www.linkedin.com/in/anish-mogam-33a2b6218"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="LinkedIn"
+            className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 hover:text-black"
           >
-            <span
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontWeight: 800,
-                fontSize: '1.05rem',
-                letterSpacing: '-0.01em',
-                color: 'var(--text-primary)',
-              }}
-            >
-              ANISH MOGAM
-            </span>
-            <span
-              style={{
-                fontSize: '0.68rem',
-                color: 'var(--signal-orange)',
-                border: '1px solid var(--border-hairline)',
-                padding: '0.15rem 0.45rem',
-                borderRadius: 'var(--radius-xs)',
-                letterSpacing: '0.08em',
-              }}
-            >
-              SYS_REF: AM-26
-            </span>
+            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+            </svg>
           </a>
 
-          {/* Center Telemetry Readout */}
-          <div
-            className="nav-desktop-index"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.6rem',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.72rem',
-              color: 'var(--text-secondary)',
-              borderLeft: '1px solid var(--border-hairline)',
-              borderRight: '1px solid var(--border-hairline)',
-              padding: '0 1.25rem',
-            }}
+          {/* GitHub */}
+          <a
+            href="https://github.com/Anish1302D"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub"
+            className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 hover:text-black"
           >
-            <div className="status-pulse-dot" style={{ backgroundColor: 'var(--signal-green)' }} />
-            <span>PUNE_IN // {currentTime || 'UTC+5:30'}</span>
-          </div>
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+          </a>
 
-          {/* Desktop Navigation Links */}
-          <nav
-            className="nav-desktop-index"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '1.4rem',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.72rem',
-            }}
+          {/* Resume Quick Link */}
+          <a
+            href="/anish-mogam-resume.html?print=true"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Resume"
+            className="hidden sm:inline-flex px-3 py-1 text-[11px] font-bold tracking-wider rounded-full hover:bg-black hover:text-white transition text-neutral-800"
           >
-            {navItems.map((item) => {
-              const isActive = activeSection === item.id;
-              return (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(e) => handleNavClick(e, item.id)}
-                  style={{
-                    color: isActive ? 'var(--signal-orange)' : 'var(--text-secondary)',
-                    letterSpacing: '0.05em',
-                    transition: 'color var(--duration-fast)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.3rem',
-                  }}
-                >
-                  <span style={{ opacity: 0.5 }}>[{item.code}]</span>
-                  <span>{item.name}</span>
-                </a>
-              );
-            })}
+            RESUME ↗
+          </a>
 
-            {/* Direct CTA */}
-            <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, 'contact')}
-              className="btn-cadmium"
-              style={{
-                padding: '0.45rem 1rem',
-                fontSize: '0.72rem',
-                marginLeft: '0.5rem',
-              }}
-            >
-              TRANSMIT ↗
-            </a>
-          </nav>
-
-          {/* Mobile Menu Button */}
+          {/* Contact Trigger */}
           <button
-            type="button"
-            className="nav-mobile-toggle"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            style={{
-              display: 'none',
-              alignItems: 'center',
-              gap: '0.5rem',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.75rem',
-              color: 'var(--signal-orange)',
-              border: '1px solid var(--border-hairline)',
-              padding: '0.4rem 0.8rem',
-              borderRadius: 'var(--radius-xs)',
-              background: 'var(--bg-surface)',
-            }}
-            aria-label="Toggle Navigation Index"
-            aria-expanded={mobileMenuOpen}
+            onClick={onOpenContact}
+            className="px-3 py-1 rounded-full bg-black text-white hover:bg-neutral-800 text-[11px] font-bold tracking-wider uppercase transition"
           >
-            <span>{mobileMenuOpen ? 'CLOSE ✕' : 'INDEX ≡'}</span>
+            TALK
+          </button>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            onClick={() => setIsMobileOpen(true)}
+            aria-label="Open Menu"
+            className="lg:hidden w-8 h-8 rounded-full flex items-center justify-center hover:bg-neutral-100 transition text-neutral-700 ml-1"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <line x1="4" x2="20" y1="7" y2="7"></line>
+              <line x1="4" x2="20" y1="12" y2="12"></line>
+              <line x1="4" x2="20" y1="17" y2="17"></line>
+            </svg>
           </button>
         </div>
       </header>
 
-      {/* Mobile Editorial Drawer */}
+      {/* Mobile Drawer Menu */}
       <div
-        style={{
-          position: 'fixed',
-          inset: 0,
-          zIndex: 999,
-          backgroundColor: 'rgba(7, 8, 11, 0.98)',
-          backdropFilter: 'blur(24px)',
-          WebkitBackdropFilter: 'blur(24px)',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: '6rem 2rem 3rem',
-          opacity: mobileMenuOpen ? 1 : 0,
-          pointerEvents: mobileMenuOpen ? 'auto' : 'none',
-          transition: 'opacity 0.25s var(--ease-out-expo)',
-        }}
-        aria-hidden={!mobileMenuOpen}
+        className={`fixed inset-0 z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-300 flex justify-end ${
+          isMobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={() => setIsMobileOpen(false)}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          <div
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.7rem',
-              color: 'var(--signal-orange)',
-              letterSpacing: '0.1em',
-              marginBottom: '0.5rem',
-            }}
-          >
-            // SYSTEM NAVIGATION INDEX
-          </div>
-
-          {navItems.map((item) => (
-            <a
-              key={`mob-${item.id}`}
-              href={`#${item.id}`}
-              onClick={(e) => handleNavClick(e, item.id)}
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '1.8rem',
-                fontWeight: 700,
-                color: activeSection === item.id ? 'var(--signal-orange)' : 'var(--text-primary)',
-                display: 'flex',
-                alignItems: 'baseline',
-                gap: '1rem',
-                textDecoration: 'none',
-                borderBottom: '1px solid var(--border-hairline)',
-                paddingBottom: '0.75rem',
-              }}
-            >
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--text-tertiary)' }}>
-                {item.code}
-              </span>
-              <span>{item.name}</span>
-            </a>
-          ))}
-
-          <a
-            href="#contact"
-            onClick={(e) => handleNavClick(e, 'contact')}
-            className="btn-cadmium"
-            style={{ marginTop: '1rem', width: '100%' }}
-          >
-            TRANSMIT MESSAGE ↗
-          </a>
-        </div>
-
         <div
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.72rem',
-            color: 'var(--text-tertiary)',
-            borderTop: '1px solid var(--border-hairline)',
-            paddingTop: '1.5rem',
-            display: 'flex',
-            justifyContent: 'space-between',
-          }}
+          className={`w-4/5 max-w-sm bg-white h-full p-8 flex flex-col justify-between transform transition-transform duration-300 shadow-2xl ${
+            isMobileOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+          onClick={(e) => e.stopPropagation()}
         >
-          <span>18.5204° N, 73.8567° E</span>
-          <span>{currentTime}</span>
+          <div>
+            <div className="flex items-center justify-between pb-6 border-b border-neutral-200">
+              <span className="font-extrabold text-lg tracking-tight">ANISH MOGAM•</span>
+              <button
+                onClick={() => setIsMobileOpen(false)}
+                className="w-8 h-8 rounded-full border border-neutral-300 flex items-center justify-center text-neutral-700 hover:border-black cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+            <nav className="flex flex-col gap-4 mt-8 text-base font-bold tracking-wider">
+              {navLinks.map((link) => (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={() => setIsMobileOpen(false)}
+                  className="py-2 border-b border-neutral-100 hover:text-neutral-500"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a
+                href="/anish-mogam-resume.html?print=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMobileOpen(false)}
+                className="py-2 border-b border-neutral-100 hover:text-neutral-500"
+              >
+                RESUME ↗
+              </a>
+              <button
+                onClick={() => {
+                  setIsMobileOpen(false);
+                  onOpenContact();
+                }}
+                className="py-2 text-left text-black font-extrabold hover:underline"
+              >
+                GET IN TOUCH ↗
+              </button>
+            </nav>
+          </div>
+          <div className="pt-6 border-t border-neutral-200">
+            <p className="text-xs uppercase tracking-widest text-neutral-400 mb-1">ANISH MOGAM</p>
+            <p className="text-xs text-neutral-600">Full Stack Developer & AI Builder</p>
+            <p className="text-[11px] text-neutral-400 mt-2 font-mono">Pune, MH, India</p>
+          </div>
         </div>
       </div>
     </>
