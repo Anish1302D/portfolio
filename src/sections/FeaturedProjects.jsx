@@ -47,6 +47,17 @@ export const ANISH_PROJECTS = [
     stats: 'Geospatial web application exploring 3D coordinate mapping.'
   },
   {
+    src: '/project-images/thumb-sphere-community.jpg',
+    alt: 'Sphere Community',
+    title: 'Sphere Community',
+    subtitle: 'Student-Led Tech Platform & Developer Network',
+    description: 'Digital platform and community hub for Sphere Community (sphere-club.vercel.app), a student-led developer network in Pune founded by Anish Mogam. Unites student builders for collaborative projects, hackathon participation, and peer learning.',
+    link: 'https://sphere-club.vercel.app',
+    tools: ['React', 'Tailwind CSS', 'Vercel', 'JavaScript', 'Community Architecture'],
+    deliverables: ['Student-Led Tech Community Platform', 'Collaborative Project Sprints & Hackathons', 'Peer Mentorship & Resource Sharing Directory'],
+    stats: 'Student-led tech platform and community for builders in Pune.'
+  },
+  {
     src: '/project-images/thumb-portfolio.jpg',
     alt: 'Personal Portfolio',
     title: 'Personal Portfolio',
