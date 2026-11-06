@@ -7,15 +7,18 @@ export default function Hero({ onSelectFocus }) {
       data-purpose="hero-section"
       id="home"
     >
-      {/* Editorial Role Tagline */}
-      <div className="text-center w-full mb-3">
-        <span className="inline-block text-[11px] md:text-xs font-mono font-semibold tracking-widest uppercase text-neutral-500">
+      {/* Editorial Role Tagline & Persona Statement */}
+      <div className="text-center w-full mb-3 md:mb-5 select-none">
+        <span className="inline-block text-[10px] md:text-xs font-mono font-semibold tracking-widest uppercase text-neutral-500 mb-1.5">
           Computer Science Student &bull; Full-Stack Developer &bull; Applied AI Developer
         </span>
+        <p className="text-xs md:text-sm font-bold uppercase tracking-widest text-neutral-900">
+          Building software that turns ideas into reality.
+        </p>
       </div>
 
-      {/* Big Title Header with Persona Statement */}
-      <div className="text-center w-full mb-4 md:mb-6 relative z-0 select-none">
+      {/* Big Title Header */}
+      <div className="text-center w-full mb-2 md:mb-4 relative z-0 select-none">
         <h1
           id="hero-title"
           className="text-[9.5vw] md:text-[8rem] lg:text-[9.5rem] font-extrabold uppercase leading-[0.85] tracking-tight"
@@ -27,9 +30,6 @@ export default function Hero({ onSelectFocus }) {
             <span className="metallic-title">PORTFOLIO</span>
           </span>
         </h1>
-        <p className="mt-3 md:mt-4 text-xs md:text-sm font-bold uppercase tracking-widest text-neutral-800">
-          Building software that turns ideas into reality.
-        </p>
       </div>
 
       {/* Center Headshot & Symmetrical Content Grid */}
