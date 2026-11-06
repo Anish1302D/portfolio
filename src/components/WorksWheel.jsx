@@ -63,6 +63,24 @@ export default function WorksWheel({ items = [], label = "Works '26", action = "
     wheelEl.className = 'absolute top-1/2 left-1/2 pointer-events-none';
     wheelEl.style.transformStyle = 'preserve-3d';
 
+    let isPointerDown = false;
+    let pointerStartX = 0;
+    let pointerStartY = 0;
+    let pointerLastY = 0;
+    let hasDragged = false;
+    let capturedPointerId = null;
+    let lastSelectTimestamp = 0;
+
+    const handleSelectCard = (index, data) => {
+      const now = Date.now();
+      if (now - lastSelectTimestamp < 350) return;
+      lastSelectTimestamp = now;
+      to(index + 1);
+      if (onSelect) {
+        onSelect(index, data);
+      }
+    };
+
     const cardRefs = [];
     items.forEach((item, i) => {
       const card = document.createElement('div');
@@ -74,7 +92,7 @@ export default function WorksWheel({ items = [], label = "Works '26", action = "
       card.style.willChange = 'transform, opacity';
 
       const face = document.createElement('div');
-      face.className = 'relative block w-full h-full overflow-hidden rounded-2xl bg-white border border-neutral-300/80 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.12),0_4px_12px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_28px_50px_-10px_rgba(0,0,0,0.22)] hover:border-neutral-500';
+      face.className = 'relative block w-full h-full overflow-hidden rounded-2xl bg-white border border-neutral-300/80 shadow-[0_20px_45px_-15px_rgba(0,0,0,0.12),0_4px_12px_rgba(0,0,0,0.06)] transition-all duration-300 hover:shadow-[0_28px_50px_-10px_rgba(0,0,0,0.22)] hover:border-neutral-500 cursor-pointer';
       face.style.willChange = 'transform';
       face.style.transformOrigin = 'center center';
 
@@ -104,13 +122,16 @@ export default function WorksWheel({ items = [], label = "Works '26", action = "
       face.appendChild(cardInfo);
       card.appendChild(face);
 
-      card.addEventListener('click', () => {
-        if (dragDelta > 6) return;
-        if (active === i) {
-          if (onSelect) onSelect(i, item);
-        } else {
-          to(i + 1);
-        }
+      card.addEventListener('click', (e) => {
+        if (hasDragged) return;
+        e.stopPropagation();
+        handleSelectCard(i, item);
+      });
+
+      card.addEventListener('pointerup', (e) => {
+        if (hasDragged) return;
+        e.stopPropagation();
+        handleSelectCard(i, item);
       });
 
       wheelEl.appendChild(card);
@@ -126,12 +147,6 @@ export default function WorksWheel({ items = [], label = "Works '26", action = "
     labelEl.textContent = label;
     section.appendChild(labelEl);
 
-    // Front-card title
-    const titleEl = document.createElement('div');
-    titleEl.className = 'pointer-events-none absolute top-1/2 left-[5%] md:left-[7%] -translate-y-1/2 tracking-tight font-black uppercase text-neutral-900 opacity-0 select-none z-10 max-w-[42%] leading-[1.05]';
-    titleEl.textContent = items[0] ? items[0].title : '';
-    section.appendChild(titleEl);
-
     // Side Index List
     const indexList = document.createElement('ol');
     indexList.className = 'text-neutral-500 absolute top-[7%] right-[3%] text-right leading-[1.75] z-20 space-y-0.5 select-none font-mono';
@@ -146,8 +161,13 @@ export default function WorksWheel({ items = [], label = "Works '26", action = "
       if (i === 0) {
         btn.className = 'cursor-pointer transition-all duration-200 text-[11px] md:text-xs tracking-wider outline-none text-neutral-900 font-bold block ml-auto underline decoration-2 underline-offset-4';
       }
-      btn.addEventListener('click', () => {
-        to(i + 1);
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (active === i) {
+          handleSelectCard(i, item);
+        } else {
+          to(i + 1);
+        }
       });
       li.appendChild(btn);
       indexList.appendChild(li);
@@ -206,7 +226,6 @@ export default function WorksWheel({ items = [], label = "Works '26", action = "
       });
 
       labelEl.style.fontSize = `${currentMetrics.title}px`;
-      titleEl.style.fontSize = `${currentMetrics.title * 0.9}px`;
     }
 
     applyMetrics();
@@ -236,34 +255,44 @@ export default function WorksWheel({ items = [], label = "Works '26", action = "
     };
     stageEl.addEventListener('wheel', onWheel, { passive: false });
 
-    let isPointerDown = false;
-    let dragStartY = 0;
-    let dragDelta = 0;
-
     stageEl.addEventListener('pointerdown', (event) => {
+      if (event.target.closest('button, a')) return;
       isPointerDown = true;
-      dragStartY = event.clientY;
-      dragDelta = 0;
-      try {
-        stageEl.setPointerCapture(event.pointerId);
-      } catch (_) {}
+      pointerStartX = event.clientX;
+      pointerStartY = event.clientY;
+      pointerLastY = event.clientY;
+      hasDragged = false;
+      capturedPointerId = null;
     });
 
     stageEl.addEventListener('pointermove', (event) => {
       if (!isPointerDown) return;
-      const diff = dragStartY - event.clientY;
-      dragDelta += Math.abs(diff);
-      to(target + diff / DRAG_UNITS);
-      dragStartY = event.clientY;
+      const totalMoved = Math.hypot(event.clientX - pointerStartX, event.clientY - pointerStartY);
+      if (!hasDragged && totalMoved > 8) {
+        hasDragged = true;
+        try {
+          stageEl.setPointerCapture(event.pointerId);
+          capturedPointerId = event.pointerId;
+        } catch (_) {}
+      }
+
+      if (hasDragged) {
+        const diff = pointerLastY - event.clientY;
+        to(target + diff / DRAG_UNITS);
+        pointerLastY = event.clientY;
+      }
     });
 
     const endDrag = (event) => {
       if (!isPointerDown) return;
       isPointerDown = false;
-      try {
-        stageEl.releasePointerCapture(event.pointerId);
-      } catch (_) {}
-      if (target > 1) {
+      if (capturedPointerId !== null) {
+        try {
+          stageEl.releasePointerCapture(capturedPointerId);
+        } catch (_) {}
+        capturedPointerId = null;
+      }
+      if (hasDragged && target > 1) {
         to(Math.round(target));
       }
     };
@@ -284,10 +313,6 @@ export default function WorksWheel({ items = [], label = "Works '26", action = "
           btn.className = 'cursor-pointer transition-all duration-200 text-[11px] md:text-xs tracking-wider outline-none text-neutral-400 hover:text-neutral-900 block ml-auto';
         }
       });
-
-      if (items[near]) {
-        titleEl.textContent = items[near].title;
-      }
     }
 
     let frameId = 0;
@@ -337,7 +362,6 @@ export default function WorksWheel({ items = [], label = "Works '26", action = "
       }
 
       if (labelEl) labelEl.style.opacity = String(1 - m);
-      if (titleEl) titleEl.style.opacity = String(m);
 
       const near = clamp(Math.round(pos), 0, last);
       if (near !== active) {
